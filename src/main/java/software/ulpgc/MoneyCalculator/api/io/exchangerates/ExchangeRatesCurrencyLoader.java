@@ -1,10 +1,11 @@
-package software.ulpgc.io.api.exchangerates;
+package software.ulpgc.MoneyCalculator.api.io.exchangerates;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import software.ulpgc.model.Currency;
-import software.ulpgc.model.CurrencyLoader;
+import software.ulpgc.MoneyCalculator.architecture.io.CurrencyCodeToSymbolLoader;
+import software.ulpgc.MoneyCalculator.architecture.model.Currency;
+import software.ulpgc.MoneyCalculator.architecture.model.CurrencyLoader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,17 +16,24 @@ import java.util.Map;
 
 public class ExchangeRatesCurrencyLoader implements CurrencyLoader {
 
+    private final CurrencyCodeToSymbolLoader loader;
+
+    public ExchangeRatesCurrencyLoader(CurrencyCodeToSymbolLoader loader) {
+        this.loader = loader;
+    }
+
     @Override
     public List<Currency> load() throws IOException {
         return fromJsonCurrencyList(loadJson());
 
     }
 
-    private List<Currency> fromJsonCurrencyList(String replyString) {
+    private List<Currency> fromJsonCurrencyList(String replyString) throws IOException {
         Map<String, JsonElement> currencyCodeToName = new Gson().fromJson(replyString, JsonObject.class).get("symbols").getAsJsonObject().asMap();
+        Map<String, String> codeToSymbols = loader.load();
         List<Currency> currencies = new ArrayList<>();
         for (String code : currencyCodeToName.keySet()) {
-            currencies.add(new Currency(code, currencyCodeToName.get(code).toString(), "100"));
+            currencies.add(new Currency(code, currencyCodeToName.get(code).toString(), codeToSymbols.getOrDefault(code, "")));
         }
         return currencies;
     }

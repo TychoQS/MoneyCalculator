@@ -1,4 +1,4 @@
-package software.ulpgc.model;
+package software.ulpgc.MoneyCalculator.architecture.model;
 
 import java.util.Objects;
 
