@@ -5,7 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import software.ulpgc.MoneyCalculator.architecture.io.CurrencyCodeToSymbolLoader;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
-import software.ulpgc.MoneyCalculator.architecture.model.CurrencyLoader;
+import software.ulpgc.MoneyCalculator.architecture.io.CurrencyLoader;
 
 import java.io.IOException;
 import java.io.InputStream;
