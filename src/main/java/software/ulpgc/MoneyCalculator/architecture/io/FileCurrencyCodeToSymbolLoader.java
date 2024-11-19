@@ -1,7 +1,7 @@
 package software.ulpgc.MoneyCalculator.architecture.io;
 
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.CurrencyCodeToSymbolLoader;
-import software.ulpgc.MoneyCalculator.architecture.model.CurrencyCodeToSymbol;
+import software.ulpgc.MoneyCalculator.api.io.exchangerates.CurrencyCodeToSymbol;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.CurrencyCodeToSymbolDeserializer;
 
 import java.io.*;
