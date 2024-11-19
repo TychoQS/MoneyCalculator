@@ -1,7 +1,6 @@
 package software.ulpgc.MoneyCalculator.architecture.io;
 
 import software.ulpgc.MoneyCalculator.architecture.model.CurrencyCodeToSymbol;
-import software.ulpgc.MoneyCalculator.architecture.model.CurrencyCodeToSymbolDeserializer;
 
 import java.io.*;
 import java.nio.file.Files;

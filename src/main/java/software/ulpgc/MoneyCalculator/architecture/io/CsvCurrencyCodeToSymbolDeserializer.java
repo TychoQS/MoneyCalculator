@@ -1,4 +1,6 @@
-package software.ulpgc.MoneyCalculator.architecture.model;
+package software.ulpgc.MoneyCalculator.architecture.io;
+
+import software.ulpgc.MoneyCalculator.architecture.model.CurrencyCodeToSymbol;
 
 public class CsvCurrencyCodeToSymbolDeserializer implements CurrencyCodeToSymbolDeserializer {
     @Override
