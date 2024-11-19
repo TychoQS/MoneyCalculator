@@ -3,7 +3,6 @@ package software.ulpgc.MoneyCalculator.api.io.exchangerates;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import software.ulpgc.MoneyCalculator.architecture.io.CurrencyCodeToSymbolLoader;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.io.CurrencyLoader;
 

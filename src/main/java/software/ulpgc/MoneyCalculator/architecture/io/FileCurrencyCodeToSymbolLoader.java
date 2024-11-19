@@ -1,14 +1,15 @@
 package software.ulpgc.MoneyCalculator.architecture.io;
 
+import software.ulpgc.MoneyCalculator.api.io.exchangerates.CurrencyCodeToSymbolLoader;
 import software.ulpgc.MoneyCalculator.architecture.model.CurrencyCodeToSymbol;
-import software.ulpgc.MoneyCalculator.architecture.model.CurrencyCodeToSymbolDeserializer;
+import software.ulpgc.MoneyCalculator.api.io.exchangerates.CurrencyCodeToSymbolDeserializer;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FileCurrencyCodeToSymbolLoader implements CurrencyCodeToSymbolLoader{
+public class FileCurrencyCodeToSymbolLoader implements CurrencyCodeToSymbolLoader {
     private final CurrencyCodeToSymbolDeserializer deserializer;
     private final File file;
 
