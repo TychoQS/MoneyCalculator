@@ -1,8 +1,9 @@
 package software.ulpgc.MoneyCalculator.api.io.pojos;
 
 import java.util.List;
+import java.util.Map;
 
-public record ExchangeRatesSymbolsGetResponse(List<Symbol> response) {
-    public record Symbol(String code, String name) {
+public record ExchangeRatesSymbolsGetResponse(List<Symbol> symbols) {
+    public record Symbol(Map<String, String> response) {
     }
 }
