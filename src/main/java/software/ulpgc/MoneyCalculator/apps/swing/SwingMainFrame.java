@@ -12,6 +12,7 @@ public class SwingMainFrame extends JFrame {
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.add(titlePane());
+        // TODO -> Añadir el resto de componentes para la visualización básica
     }
 
     private Component titlePane() {

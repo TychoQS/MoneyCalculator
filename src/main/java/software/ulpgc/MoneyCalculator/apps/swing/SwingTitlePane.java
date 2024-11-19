@@ -2,9 +2,12 @@ package software.ulpgc.MoneyCalculator.apps.swing;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class SwingTitlePane {
     private final JPanel pane;
+    private JLabel titleLabel;
 
     public SwingTitlePane() {
         pane = new JPanel();
@@ -12,7 +15,7 @@ public class SwingTitlePane {
     }
 
     private Component getTitle() {
-        JLabel titleLabel = new JLabel("Money Calculator");
+        this.titleLabel = new JLabel("Money Calculator");
         titleLabel.setFont(getFont());
         return titleLabel;
     }
