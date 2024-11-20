@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.api.io.exchangerates;
+package software.ulpgc.MoneyCalculator.architecture.io;
 
 import java.io.IOException;
 import java.util.Map;

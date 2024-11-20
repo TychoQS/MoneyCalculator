@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.api.io.exchangerates;
+package software.ulpgc.MoneyCalculator.architecture.io;
 
 public interface CurrencyCodeToSymbolDeserializer {
     CurrencyCodeToSymbol deserialize(String line);
