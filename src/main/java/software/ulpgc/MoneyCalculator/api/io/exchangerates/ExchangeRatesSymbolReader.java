@@ -24,7 +24,7 @@ public class ExchangeRatesSymbolReader implements SymbolReader {
                 .header("accept", "text/*")
                 .method(GET)
                 .execute();
-        if (response.statusCode() != 200) throw  new RuntimeException("fdsfasdf");
+        if (response.statusCode() != 200) throw new RuntimeException();
         return response.body();
     }
 }
