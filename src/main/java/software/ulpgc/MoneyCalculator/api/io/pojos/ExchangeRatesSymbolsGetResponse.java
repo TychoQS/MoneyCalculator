@@ -1,11 +1,10 @@
 package software.ulpgc.MoneyCalculator.api.io.pojos;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 import java.util.Map;
 
-public record ExchangeRatesSymbolsGetResponse(Success success, List<Symbol> symbols) {
-    public record Symbol(Map<String, String> response) {
-    }
-    public record Success (boolean value) {
-    }
+public record ExchangeRatesSymbolsGetResponse(boolean success, Map<String, String> symbols) {
+
 }
