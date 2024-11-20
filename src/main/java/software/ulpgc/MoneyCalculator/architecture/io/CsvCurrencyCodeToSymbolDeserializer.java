@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.api.io.exchangerates;
+package software.ulpgc.MoneyCalculator.architecture.io;
 
 public class CsvCurrencyCodeToSymbolDeserializer implements CurrencyCodeToSymbolDeserializer {
     @Override
