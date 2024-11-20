@@ -2,7 +2,6 @@ package software.ulpgc.MoneyCalculator.api.io.exchangerates;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
-import software.ulpgc.MoneyCalculator.architecture.io.SymbolReader;
 
 import java.io.IOException;
 
