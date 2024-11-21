@@ -33,7 +33,7 @@ public class ExchangeRatesCurrencyAdapter implements CurrencyAdapter {
     private List<Currency> listOf(Map<String, String> symbols) {
         List<Currency> currencies = new ArrayList<>();
         for (String code : symbols.keySet()) {
-            currencies.add(new Currency(code, symbols.get(code), codeToSymbols.getOrDefault(code, "")));
+            currencies.add(new Currency(code, symbols.get(code), codeToSymbols.getOrDefault(code, "N/A")));
         }
         return currencies;
     }
