@@ -10,6 +10,9 @@ import java.util.List;
 
 public class SwingMainFrame extends JFrame {
 
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 800;
+    public static final String TITLE = "Money Calculator";
     private final List<Currency> currencies;
     private SwingCurrenciesDialogsPane swingCurrenciesDialogsPane;
     private SwingConversionPane swingConversionPane;
@@ -37,8 +40,8 @@ public class SwingMainFrame extends JFrame {
     }
 
     private void initFrame() {
-        this.setTitle("Money Calculator");
-        this.setSize(800, 800);
+        this.setTitle(TITLE);
+        this.setSize(WIDTH, HEIGHT);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
