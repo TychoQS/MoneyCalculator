@@ -1,8 +1,6 @@
 package software.ulpgc.MoneyCalculator.apps.swing;
 
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
-import software.ulpgc.MoneyCalculator.architecture.view.CurrencyDisplay;
-import software.ulpgc.MoneyCalculator.mock.swing.SwingMockPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,7 +36,7 @@ public class SwingMainFrame extends JFrame {
     }
 
     private Component exchangePane() {
-        return new SwingExchangePane(currencies).create();
+        return new SwingCurrenciesDialogsPane(currencies).create();
     }
 
     private Component titlePane() {
