@@ -15,15 +15,19 @@ public class SwingMainFrame extends JFrame {
     public SwingMainFrame(List<Currency> currencies) throws HeadlessException {
         super();
         this.currencies = currencies;
+        initFrame();
+        this.add(BorderLayout.NORTH, titlePane());
+        this.add(BorderLayout.CENTER, centerPane());
+        // TODO -> Añadir el resto de componentes para la visualización básica
+    }
+
+    private void initFrame() {
         this.setTitle("Money Calculator");
         this.setSize(800, 800);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.add(BorderLayout.NORTH, titlePane());
-        this.add(BorderLayout.CENTER, centerPane());
-        // TODO -> Añadir el resto de componentes para la visualización básica
     }
 
     private Component centerPane() {
