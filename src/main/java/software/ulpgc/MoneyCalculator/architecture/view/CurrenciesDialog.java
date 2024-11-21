@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface CurrenciesDialog {
     void display(List<Currency> currencies);
+    Currency getSelectedCurrency();
 }
