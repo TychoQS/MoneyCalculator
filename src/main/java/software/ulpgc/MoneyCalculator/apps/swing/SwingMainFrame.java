@@ -23,8 +23,6 @@ public class SwingMainFrame extends JFrame {
         initFrame();
         this.add(BorderLayout.NORTH, titlePane());
         this.add(BorderLayout.CENTER, centerPane());
-
-        // TODO -> Añadir el resto de componentes para la visualización básica
     }
 
     public CurrenciesDialog getFromCurrency() {
