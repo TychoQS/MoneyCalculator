@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FileCurrencyCodeToSymbolListLoader implements CurrencyCodeToSymbolLoader {
+public class FileCurrencyCodeToSymbolListLoader implements CurrencyCodesToSymbolsLoader {
     public static final int CODE = 0;
     public static final int SYMBOL = 1;
     private final codeAndSymbolDeserializer deserializer;
@@ -18,8 +18,8 @@ public class FileCurrencyCodeToSymbolListLoader implements CurrencyCodeToSymbolL
     }
 
     @Override
-    public CurrencyCodeToSymbol load() throws IOException {
-        return new CurrencyCodeToSymbol(getCurrencyCodeToSymbolMap());
+    public CurrencyCodesToSymbols load() throws IOException {
+        return new CurrencyCodesToSymbols(getCurrencyCodeToSymbolMap());
     }
 
     private Map<String, String> getCurrencyCodeToSymbolMap() throws IOException {
