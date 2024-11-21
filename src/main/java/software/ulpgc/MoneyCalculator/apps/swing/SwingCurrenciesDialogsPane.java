@@ -7,14 +7,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class SwingExchangePane {
+public class SwingCurrenciesDialogsPane {
 
     private final JPanel pane;
     private final CurrenciesDialog fromCurrency;
     private final CurrenciesDialog toCurrency;
     private final List<Currency> currencies;
 
-    public SwingExchangePane(List<Currency> currencies) {
+    public SwingCurrenciesDialogsPane(List<Currency> currencies) {
         this.currencies = currencies;
         pane = new JPanel();
         fromCurrency = new SwingCurrenciesDialog();
