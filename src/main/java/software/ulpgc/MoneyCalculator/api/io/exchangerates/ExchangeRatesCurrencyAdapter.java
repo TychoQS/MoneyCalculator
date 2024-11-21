@@ -1,9 +1,10 @@
 package software.ulpgc.MoneyCalculator.api.io.exchangerates;
 
 import software.ulpgc.MoneyCalculator.api.io.pojos.ExchangeRatesSymbolsGetResponse;
-import software.ulpgc.MoneyCalculator.architecture.io.CsvCurrencyCodeToSymbolDeserializer;
+import software.ulpgc.MoneyCalculator.architecture.io.CsvCodeAndSymbolDeserializer;
 import software.ulpgc.MoneyCalculator.architecture.io.CurrencyAdapter;
-import software.ulpgc.MoneyCalculator.architecture.io.FileCurrencyCodeToSymbolLoader;
+import software.ulpgc.MoneyCalculator.architecture.io.CurrencyCodeToSymbol;
+import software.ulpgc.MoneyCalculator.architecture.io.FileCurrencyCodeToSymbolListLoader;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 
 import java.io.File;
@@ -14,10 +15,10 @@ import java.util.Map;
 
 public class ExchangeRatesCurrencyAdapter implements CurrencyAdapter {
 
-    private final Map<String, String> codeToSymbols;
+    private final CurrencyCodeToSymbol codeToSymbols;
 
     public ExchangeRatesCurrencyAdapter() throws IOException {
-        codeToSymbols = new FileCurrencyCodeToSymbolLoader(new File("src/main/resources/currencies_map_iso_to_symbol.csv"), new CsvCurrencyCodeToSymbolDeserializer()).load();
+        codeToSymbols = new FileCurrencyCodeToSymbolListLoader(new File("src/main/resources/currency_code_to_symbol.csv"), new CsvCodeAndSymbolDeserializer()).load();
     }
 
     @Override
@@ -36,6 +37,5 @@ public class ExchangeRatesCurrencyAdapter implements CurrencyAdapter {
         }
         return currencies;
     }
-
 
 }
