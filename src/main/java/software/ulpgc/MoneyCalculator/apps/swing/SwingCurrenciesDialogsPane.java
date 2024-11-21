@@ -9,19 +9,19 @@ import java.util.List;
 
 public class SwingCurrenciesDialogsPane {
 
-    private final JPanel pane;
+    private final JPanel currenciesDialogsPane;
     private final CurrenciesDialog fromCurrency;
     private final CurrenciesDialog toCurrency;
     private final List<Currency> currencies;
 
     public SwingCurrenciesDialogsPane(List<Currency> currencies) {
         this.currencies = currencies;
-        pane = new JPanel();
+        currenciesDialogsPane = new JPanel();
         fromCurrency = new SwingCurrenciesDialog();
         toCurrency = new SwingCurrenciesDialog();
-        pane.add((Component) fromCurrency);
-        pane.add(exchangeButton());
-        pane.add((Component) toCurrency);
+        currenciesDialogsPane.add((Component) fromCurrency);
+        currenciesDialogsPane.add(exchangeButton());
+        currenciesDialogsPane.add((Component) toCurrency);
         // TODO -> Probar con BorderLayoutRecursivos
         // TODO -> Probar con BoxLayout X_AXIS y que cada componente tenga su propio panel
     }
@@ -44,9 +44,17 @@ public class SwingCurrenciesDialogsPane {
         return button;
     }
 
-    public JPanel create() {
+    public JPanel getCurrenciesDialogsPane() {
         fromCurrency.display(currencies);
         toCurrency.display(currencies);
-        return pane;
+        return currenciesDialogsPane;
+    }
+
+    public CurrenciesDialog getFromCurrency() {
+        return fromCurrency;
+    }
+
+    public CurrenciesDialog getToCurrency() {
+        return toCurrency;
     }
 }
