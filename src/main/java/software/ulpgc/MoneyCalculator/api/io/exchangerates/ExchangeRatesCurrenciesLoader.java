@@ -1,16 +1,17 @@
 package software.ulpgc.MoneyCalculator.api.io.exchangerates;
 
 import software.ulpgc.MoneyCalculator.architecture.io.CurrenciesLoader;
+import software.ulpgc.MoneyCalculator.architecture.io.CurrencyAdapter;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 
 import java.util.List;
 
 public class ExchangeRatesCurrenciesLoader implements CurrenciesLoader {
-    private final ExchangeRatesSymbolReader reader;
-    private final ExchangeRatesSymbolDeserializer deserializer;
-    private final ExchangeRatesCurrencyAdapter adapter;
+    private final SymbolReader reader;
+    private final SymbolDeserializer deserializer;
+    private final CurrencyAdapter adapter;
 
-    public ExchangeRatesCurrenciesLoader(ExchangeRatesSymbolReader reader, ExchangeRatesSymbolDeserializer deserializer, ExchangeRatesCurrencyAdapter adapter) {
+    public ExchangeRatesCurrenciesLoader(SymbolReader reader, SymbolDeserializer deserializer, CurrencyAdapter adapter) {
         this.reader = reader;
         this.deserializer = deserializer;
         this.adapter = adapter;
