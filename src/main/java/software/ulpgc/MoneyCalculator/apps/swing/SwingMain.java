@@ -10,13 +10,17 @@ import java.util.List;
 
 public class SwingMain {
     public static void main(String[] args) throws IOException {
-        ExchangeRatesSymbolReader reader = new ExchangeRatesSymbolReader();
-        ExchangeRatesSymbolDeserializer deserializer = new ExchangeRatesSymbolDeserializer();
-        ExchangeRatesCurrencyAdapter adapter = new ExchangeRatesCurrencyAdapter();
-        List<Currency> currencies = adapter.adapt(deserializer.deserialize(reader.read()));
+        List<Currency> currencies = getCurrencies();
         SwingMainFrame mainFrame = new SwingMainFrame(currencies);
         mainFrame.setVisible(true);
         // TODO -> ImportCommand
         // TODO -> Refactorizar para abrir los recursos perteneciente a la carpeta resources a como hemos visto en clase (Objeto .class)
+    }
+
+    private static List<Currency> getCurrencies() throws IOException {
+        ExchangeRatesSymbolReader reader = new ExchangeRatesSymbolReader();
+        ExchangeRatesSymbolDeserializer deserializer = new ExchangeRatesSymbolDeserializer();
+        ExchangeRatesCurrencyAdapter adapter = new ExchangeRatesCurrencyAdapter();
+        return adapter.adapt(deserializer.deserialize(reader.read()));
     }
 }
