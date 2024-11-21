@@ -22,6 +22,7 @@ public class SwingExchangePane {
         pane.add(BorderLayout.CENTER, comboBoxPane());
         pane.add(BorderLayout.SOUTH, exchangeButton());
         // TODO Probar con BorderLayoutRecursivos
+        // TODO Probar con BoxLayout X_AXIS y que cada componente tenga su propio panel.k
     }
 
     private Component comboBoxPane() {
