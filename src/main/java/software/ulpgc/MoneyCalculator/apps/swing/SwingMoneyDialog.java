@@ -11,7 +11,7 @@ public class SwingMoneyDialog extends JTextField implements MoneyDialog {
     private final CurrenciesDialog currenciesDialog;
 
     public SwingMoneyDialog(CurrenciesDialog currenciesDialog) {
-        super();
+        super(10);
         this.currenciesDialog = currenciesDialog;
     }
 
