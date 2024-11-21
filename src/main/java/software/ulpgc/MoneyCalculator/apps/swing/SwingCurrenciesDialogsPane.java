@@ -22,8 +22,6 @@ public class SwingCurrenciesDialogsPane {
         currenciesDialogsPane.add((Component) fromCurrency);
         currenciesDialogsPane.add(exchangeButton());
         currenciesDialogsPane.add((Component) toCurrency);
-        // TODO -> Probar con BorderLayoutRecursivos
-        // TODO -> Probar con BoxLayout X_AXIS y que cada componente tenga su propio panel
     }
 
     private Component fromCurrencyPanel() {
