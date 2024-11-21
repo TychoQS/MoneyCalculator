@@ -31,11 +31,11 @@ public class SwingMainFrame extends JFrame {
     private Component centerPane() {
         JPanel centerPane = new JPanel();
         centerPane.setLayout(new BoxLayout(centerPane, BoxLayout.Y_AXIS));
-        centerPane.add(exchangePane());
+        centerPane.add(currenciesDialogPane());
         return centerPane;
     }
 
-    private Component exchangePane() {
+    private Component currenciesDialogPane() {
         return new SwingCurrenciesDialogsPane(currencies).getCurrenciesDialogsPane();
     }
 
