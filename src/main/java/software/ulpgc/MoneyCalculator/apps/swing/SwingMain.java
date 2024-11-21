@@ -1,8 +1,7 @@
 package software.ulpgc.MoneyCalculator.apps.swing;
 
-import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesCurrencyAdapter;
-import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolDeserializer;
-import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolReader;
+import software.ulpgc.MoneyCalculator.api.io.exchangerates.*;
+import software.ulpgc.MoneyCalculator.architecture.io.CurrencyAdapter;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 
 import java.io.IOException;
@@ -17,9 +16,9 @@ public class SwingMain {
     }
 
     private static List<Currency> getCurrencies() throws IOException {
-        ExchangeRatesSymbolReader reader = new ExchangeRatesSymbolReader();
-        ExchangeRatesSymbolDeserializer deserializer = new ExchangeRatesSymbolDeserializer();
-        ExchangeRatesCurrencyAdapter adapter = new ExchangeRatesCurrencyAdapter();
-        return adapter.adapt(deserializer.deserialize(reader.read()));
+        SymbolReader reader = new ExchangeRatesSymbolReader();
+        SymbolDeserializer deserializer = new ExchangeRatesSymbolDeserializer();
+        CurrencyAdapter adapter = new ExchangeRatesCurrencyAdapter();
+        return new ExchangeRatesCurrenciesLoader(reader, deserializer, adapter).loadCurrencies();
     }
 }
