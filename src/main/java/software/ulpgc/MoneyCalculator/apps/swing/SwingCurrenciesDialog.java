@@ -1,16 +1,15 @@
 package software.ulpgc.MoneyCalculator.apps.swing;
 
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
-import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDisplay;
-import software.ulpgc.MoneyCalculator.architecture.view.CurrencyDisplay;
+import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class SwingCurrenciesDisplay extends JComboBox implements CurrenciesDisplay {
+public class SwingCurrenciesDialog extends JComboBox implements CurrenciesDialog {
 
-    public SwingCurrenciesDisplay() {
+    public SwingCurrenciesDialog() {
         this.setPreferredSize(new Dimension(250, 30));
     }
 

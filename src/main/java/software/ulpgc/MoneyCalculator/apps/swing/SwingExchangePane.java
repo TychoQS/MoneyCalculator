@@ -1,7 +1,7 @@
 package software.ulpgc.MoneyCalculator.apps.swing;
 
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
-import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDisplay;
+import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,15 +10,15 @@ import java.util.List;
 public class SwingExchangePane {
 
     private final JPanel pane;
-    private final CurrenciesDisplay fromCurrency;
-    private final CurrenciesDisplay toCurrency;
+    private final CurrenciesDialog fromCurrency;
+    private final CurrenciesDialog toCurrency;
     private final List<Currency> currencies;
 
     public SwingExchangePane(List<Currency> currencies) {
         this.currencies = currencies;
         pane = new JPanel(new BorderLayout());
-        fromCurrency = new SwingCurrenciesDisplay();
-        toCurrency = new SwingCurrenciesDisplay();
+        fromCurrency = new SwingCurrenciesDialog();
+        toCurrency = new SwingCurrenciesDialog();
         pane.add(BorderLayout.CENTER, comboBoxPane());
         pane.add(BorderLayout.SOUTH, exchangeButton());
         // TODO Probar con BorderLayoutRecursivos

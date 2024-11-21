@@ -4,7 +4,6 @@ import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesCurrency
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolDeserializer;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolReader;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
-import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDisplay;
 
 import java.io.IOException;
 import java.util.List;
