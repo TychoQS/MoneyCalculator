@@ -21,8 +21,9 @@ public class SwingExchangePane {
         toCurrency = new SwingCurrenciesDialog();
         pane.add(BorderLayout.CENTER, comboBoxPane());
         pane.add(BorderLayout.SOUTH, exchangeButton());
-        // TODO Probar con BorderLayoutRecursivos
-        // TODO Probar con BoxLayout X_AXIS y que cada componente tenga su propio panel.k
+        // TODO -> Probar con GridLayout que parece ser la solución
+        // TODO -> Probar con BorderLayoutRecursivos
+        // TODO -> Probar con BoxLayout X_AXIS y que cada componente tenga su propio panel
     }
 
     private Component comboBoxPane() {
