@@ -2,16 +2,14 @@ package software.ulpgc.MoneyCalculator.apps.swing;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class SwingTitlePane {
-    private final JPanel pane;
+    private final JPanel titlePane;
     private JLabel titleLabel;
 
     public SwingTitlePane() {
-        pane = new JPanel();
-        pane.add(getTitle());
+        titlePane = new JPanel();
+        titlePane.add(getTitle());
     }
 
     private Component getTitle() {
@@ -28,7 +26,7 @@ public class SwingTitlePane {
         return Toolkit.getDefaultToolkit().getScreenSize().width / 100;
     }
 
-    public JPanel create() {
-        return pane;
+    public JPanel getTitlePane() {
+        return titlePane;
     }
 }
