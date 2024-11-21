@@ -36,10 +36,10 @@ public class SwingMainFrame extends JFrame {
     }
 
     private Component exchangePane() {
-        return new SwingCurrenciesDialogsPane(currencies).create();
+        return new SwingCurrenciesDialogsPane(currencies).getCurrenciesDialogsPane();
     }
 
     private Component titlePane() {
-        return new SwingTitlePane().create();
+        return new SwingTitlePane().getTitlePane();
     }
 }
