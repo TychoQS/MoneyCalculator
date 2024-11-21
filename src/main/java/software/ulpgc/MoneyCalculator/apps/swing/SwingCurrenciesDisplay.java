@@ -5,17 +5,20 @@ import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDisplay;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrencyDisplay;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 public class SwingCurrenciesDisplay extends JComboBox implements CurrenciesDisplay {
 
-    public SwingCurrenciesDisplay() {}
+    public SwingCurrenciesDisplay() {
+        this.setPreferredSize(new Dimension(250, 30));
+    }
 
     @Override
     public void display(List<Currency> currencies) {
         this.removeAll();
         for (Currency currency : currencies) {
-            this.addItem(new Currency(currency.getName(), currency.getCode(), currency.getSymbol()) {
+            this.addItem(new Currency(currency.getCode(), currency.getName(), currency.getSymbol()) {
                 @Override
                 public String toString() {
                     return getName() + "(" + getCode() + " - " + getSymbol() + ")";
