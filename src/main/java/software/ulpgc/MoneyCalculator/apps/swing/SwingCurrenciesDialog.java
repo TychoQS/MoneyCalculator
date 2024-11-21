@@ -10,12 +10,11 @@ import java.util.List;
 public class SwingCurrenciesDialog extends JComboBox implements CurrenciesDialog {
 
     public SwingCurrenciesDialog() {
-        this.setPreferredSize(new Dimension(250, 30));
+        super();
     }
 
     @Override
     public void display(List<Currency> currencies) {
-        this.removeAll();
         for (Currency currency : currencies) {
             this.addItem(new Currency(currency.getCode(), currency.getName(), currency.getSymbol()) {
                 @Override
