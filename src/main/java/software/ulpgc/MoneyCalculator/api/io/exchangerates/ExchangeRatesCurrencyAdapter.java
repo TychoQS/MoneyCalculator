@@ -1,6 +1,7 @@
 package software.ulpgc.MoneyCalculator.api.io.exchangerates;
 
 import software.ulpgc.MoneyCalculator.api.io.pojos.ExchangeRatesSymbolsGetResponse;
+import software.ulpgc.MoneyCalculator.apps.swing.SwingMain;
 import software.ulpgc.MoneyCalculator.architecture.io.CsvCodeAndSymbolDeserializer;
 import software.ulpgc.MoneyCalculator.architecture.io.CurrencyAdapter;
 import software.ulpgc.MoneyCalculator.architecture.io.CurrencyCodesToSymbols;
@@ -9,6 +10,7 @@ import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +20,11 @@ public class ExchangeRatesCurrencyAdapter implements CurrencyAdapter {
     private final CurrencyCodesToSymbols codeToSymbols;
 
     public ExchangeRatesCurrencyAdapter() throws IOException {
-        codeToSymbols = new FileCurrencyCodeToSymbolListLoader(new File("src/main/resources/currency_code_to_symbol.csv"), new CsvCodeAndSymbolDeserializer()).load();
+        codeToSymbols = new FileCurrencyCodeToSymbolListLoader(getResource(), new CsvCodeAndSymbolDeserializer()).load();
+    }
+
+    private static InputStream getResource() {
+        return SwingMain.class.getResourceAsStream("/currency_code_to_symbol.csv");
     }
 
     @Override

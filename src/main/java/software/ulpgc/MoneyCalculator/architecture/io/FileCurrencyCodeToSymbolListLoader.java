@@ -10,10 +10,10 @@ public class FileCurrencyCodeToSymbolListLoader implements CurrencyCodesToSymbol
     public static final int CODE = 0;
     public static final int SYMBOL = 1;
     private final codeAndSymbolDeserializer deserializer;
-    private final File file;
+    private final InputStream fileAsInputStream;
 
-    public FileCurrencyCodeToSymbolListLoader(File file, codeAndSymbolDeserializer deserializer) {
-        this.file = file;
+    public FileCurrencyCodeToSymbolListLoader(InputStream fileAsInputStream, codeAndSymbolDeserializer deserializer) {
+        this.fileAsInputStream = fileAsInputStream;
         this.deserializer = deserializer;
     }
 
@@ -44,6 +44,6 @@ public class FileCurrencyCodeToSymbolListLoader implements CurrencyCodesToSymbol
     }
 
     private BufferedReader getBufferedReader() throws IOException {
-        return new BufferedReader(new InputStreamReader(Files.newInputStream(file.toPath())));
+        return new BufferedReader(new InputStreamReader(this.fileAsInputStream));
     }
 }

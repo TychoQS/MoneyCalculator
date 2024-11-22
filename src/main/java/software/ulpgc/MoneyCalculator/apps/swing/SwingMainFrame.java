@@ -23,6 +23,7 @@ public class SwingMainFrame extends JFrame {
         initFrame();
         this.add(BorderLayout.NORTH, titlePane());
         this.add(BorderLayout.CENTER, centerPane());
+        // TODO -> Añadir Panel para mostrar el MoneyDisplay
     }
 
     public CurrenciesDialog getFromCurrency() {
