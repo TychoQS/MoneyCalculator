@@ -4,7 +4,6 @@ import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.List;
 
 public class SwingCurrenciesDialog extends JComboBox implements CurrenciesDialog {
