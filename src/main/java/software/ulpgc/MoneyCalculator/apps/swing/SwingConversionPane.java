@@ -38,7 +38,7 @@ public class SwingConversionPane {
     }
 
     private Font getLabelFont() {
-        return new Font("Arial", Font.PLAIN, 12);
+        return new Font("Montserrat", Font.BOLD, 15);
     }
 
     protected JPanel getConversionPane() {
