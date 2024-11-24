@@ -8,17 +8,13 @@ import java.io.IOException;
 import static org.jsoup.Connection.Method.GET;
 
 public class CurrencyLayerExchangeRateReader implements ExchangeRateReader {
-    private final String fromCurrency;
-    private final String toCurrency;
 
-    public CurrencyLayerExchangeRateReader(String fromCurrency, String toCurrency) {
-        this.fromCurrency = fromCurrency;
-        this.toCurrency = toCurrency;
+    public CurrencyLayerExchangeRateReader() {
     }
 
     @Override
-    public String read() throws IOException {
-        return read(CurrencyLayerApi.getExchangeRateEndpoint(fromCurrency, toCurrency));
+    public String read(String fromCurrencyCode, String toCurrencyCode) throws IOException {
+        return read(CurrencyLayerApi.getExchangeRateEndpoint(fromCurrencyCode, toCurrencyCode));
     }
 
     private String read(String exchangeRateEndpoint) throws IOException {

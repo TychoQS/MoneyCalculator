@@ -20,6 +20,6 @@ public class CurrencyLayerExchangeRateLoader implements ExchangeRateLoader {
 
     @Override
     public ExchangeRate load(Currency fromCurrency, Currency toCurrency) throws IOException {
-        return this.adapter.adapt(deserializer.deserialize(reader.read()), fromCurrency, toCurrency);
+        return this.adapter.adapt(deserializer.deserialize(reader.read(fromCurrency.getCode(), toCurrency.getCode())), fromCurrency, toCurrency);
     }
 }
