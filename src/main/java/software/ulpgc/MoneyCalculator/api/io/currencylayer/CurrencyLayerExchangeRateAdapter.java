@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class CurrencyLayerExchangeRateAdapter implements ExchangeRateAdapter {
 
 
-    public CurrencyLayerExchangeRateAdapter(Currency fromCurrency, Currency toCurrency) {
+    public CurrencyLayerExchangeRateAdapter() {
     }
 
     @Override
