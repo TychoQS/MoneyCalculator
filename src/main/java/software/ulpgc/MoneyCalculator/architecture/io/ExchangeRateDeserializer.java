@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.api.io.currencylayer;
+package software.ulpgc.MoneyCalculator.architecture.io;
 
 public interface ExchangeRateDeserializer {
     Object deserialize(String read);
