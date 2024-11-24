@@ -1,12 +1,15 @@
 package software.ulpgc.MoneyCalculator.apps.swing;
 
+import software.ulpgc.MoneyCalculator.architecture.control.Command;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
+import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 import software.ulpgc.MoneyCalculator.mock.swing.SwingMockPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 import java.util.List;
 
 public class SwingMainFrame extends JFrame {
@@ -15,15 +18,21 @@ public class SwingMainFrame extends JFrame {
     public static final int HEIGHT = 800;
     public static final String TITLE = "Money Calculator";
     private final List<Currency> currencies;
+    private final HashMap<String, Command> commands;
     private SwingCurrenciesDialogsPane swingCurrenciesDialogsPane;
     private SwingConversionPane swingConversionPane;
 
     public SwingMainFrame(List<Currency> currencies) throws HeadlessException {
         super();
         this.currencies = currencies;
+        this.commands = new HashMap<String, Command>();
         initFrame();
         this.add(titlePane());
         this.add(centerPane());
+    }
+
+    public Command put(String key, Command value) {
+        return commands.put(key, value);
     }
 
     public CurrenciesDialog getFromCurrency() {
@@ -36,6 +45,10 @@ public class SwingMainFrame extends JFrame {
 
     public MoneyDialog getMoneyDialog() {
         return swingConversionPane.getMoneyDialog();
+    }
+
+    public MoneyDisplay getMoneyDisplay() {
+        return swingConversionPane.getMoneyDisplay();
     }
 
     private void initFrame() {
@@ -54,7 +67,7 @@ public class SwingMainFrame extends JFrame {
         return centerPane;
     }
     private Component conversionPane() {
-        swingConversionPane = new SwingConversionPane(getFromCurrency());
+        swingConversionPane = new SwingConversionPane(commands, getFromCurrency());
         return swingConversionPane.getConversionPane();
     }
 
