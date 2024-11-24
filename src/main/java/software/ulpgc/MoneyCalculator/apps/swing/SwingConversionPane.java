@@ -2,6 +2,7 @@ package software.ulpgc.MoneyCalculator.apps.swing;
 
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
+import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,7 @@ public class SwingConversionPane {
 
     private final JPanel conversionPane;
     private final CurrenciesDialog fromCurrenciesDialog;
+    private MoneyDisplay moneyDisplay;
     private MoneyDialog moneyDialog;
 
     public SwingConversionPane(CurrenciesDialog fromCurrenciesDialog) {
@@ -18,6 +20,12 @@ public class SwingConversionPane {
         conversionPane.add(introduceAmountLabel());
         conversionPane.add(moneyDialog());
         conversionPane.add(convertButton());
+        conversionPane.add(moneyDisplay());
+    }
+
+    private Component moneyDisplay() {
+        this.moneyDisplay = new SwingMoneyDisplay();
+        return (Component) moneyDisplay;
     }
 
     private Component convertButton() {
@@ -47,5 +55,9 @@ public class SwingConversionPane {
 
     public MoneyDialog getMoneyDialog() {
         return moneyDialog;
+    }
+
+    public MoneyDisplay getMoneyDisplay() {
+        return moneyDisplay;
     }
 }
