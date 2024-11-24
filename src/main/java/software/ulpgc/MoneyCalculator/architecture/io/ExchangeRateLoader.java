@@ -6,5 +6,5 @@ import software.ulpgc.MoneyCalculator.architecture.model.ExchangeRate;
 import java.io.IOException;
 
 public interface ExchangeRateLoader {
-    ExchangeRate load() throws IOException;
+    ExchangeRate load(Currency fromCurrency, Currency toCurrency) throws IOException;
 }
