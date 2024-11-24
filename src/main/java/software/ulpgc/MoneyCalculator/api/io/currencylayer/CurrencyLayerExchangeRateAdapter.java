@@ -10,22 +10,18 @@ import java.time.LocalDate;
 
 public class CurrencyLayerExchangeRateAdapter implements ExchangeRateAdapter {
 
-    private final Currency fromCurrency;
-    private final Currency toCurrency;
 
     public CurrencyLayerExchangeRateAdapter(Currency fromCurrency, Currency toCurrency) {
-        this.fromCurrency = fromCurrency;
-        this.toCurrency = toCurrency;
     }
 
     @Override
-    public ExchangeRate adapt(Object object) {
+    public ExchangeRate adapt(Object object, Currency fromCurrency, Currency toCurrency) {
         CurrencyLayerExchangeRateGetResponse response = (CurrencyLayerExchangeRateGetResponse) object;
-        return adapt(response.timestampt(), response.exchangeRate());
+        return adapt(response.timestampt(), response.exchangeRate(), fromCurrency, toCurrency);
     }
 
-    private ExchangeRate adapt(long timestampt, CurrencyLayerExchangeRateGetResponse.ExchangeRate exchangeRate) {
-        return new ExchangeRate(getLocalDate(timestampt), exchangeRate.rate(), fromCurrency, toCurrency);
+    private ExchangeRate adapt(long timestampt, CurrencyLayerExchangeRateGetResponse.ExchangeRate exchangeRate, Currency from, Currency to) {
+        return new ExchangeRate(getLocalDate(timestampt), exchangeRate.rate(), from, to);
     }
 
     private LocalDate getLocalDate(long timestampt) {
