@@ -1,5 +1,5 @@
 package software.ulpgc.MoneyCalculator.api.io.exchangerates;
 
 public interface SymbolDeserializer {
-    Object deserialize(String json);
+    Object deserialize(String read);
 }
