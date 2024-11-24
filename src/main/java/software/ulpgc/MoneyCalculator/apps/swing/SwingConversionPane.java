@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class SwingConversionPane {
 
+    public static final int FONT_SIZE = 15;
     private final JPanel conversionPane;
     private final Map<String, Command> commands;
     private final CurrenciesDialog fromCurrenciesDialog;
@@ -57,7 +58,7 @@ public class SwingConversionPane {
     }
 
     private Font getLabelFont() {
-        return new Font("Montserrat", Font.BOLD, 15);
+        return new Font("Montserrat", Font.BOLD, FONT_SIZE);
     }
 
     protected JPanel getConversionPane() {
