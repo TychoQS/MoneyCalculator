@@ -10,9 +10,6 @@ import static org.jsoup.Connection.Method.GET;
 
 public class CurrencyLayerExchangeRateReader implements ExchangeRateReader {
 
-    public CurrencyLayerExchangeRateReader() {
-    }
-
     @Override
     public String read(String fromCurrencyCode, String toCurrencyCode) throws IOException {
         System.out.println("ENDPOINT URL: " + CurrencyLayerApi.getExchangeRateEndpoint(fromCurrencyCode, toCurrencyCode)); // TODO -> Remove this line
