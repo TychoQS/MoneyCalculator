@@ -11,13 +11,13 @@ public class ExchangeRatesSymbolReader implements SymbolReader {
     @Override
     public String read() {
         try {
-            return ExchangeRatesSymbolReader.read(ExchangeRatesApi.getSymbolEndpoint + ExchangeRatesApi.apiKey);
+            return read(ExchangeRatesApi.SymbolEndpoint + ExchangeRatesApi.apiKey);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static String read(String endpointUrl) throws IOException {
+    private String read(String endpointUrl) throws IOException {
         Connection.Response response = Jsoup.connect(endpointUrl)
                 .ignoreContentType(true)
                 .header("accept", "text/*")
