@@ -1,20 +1,25 @@
 package software.ulpgc.MoneyCalculator.apps.swing;
 
+import software.ulpgc.MoneyCalculator.architecture.control.Command;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.Map;
 
 public class SwingConversionPane {
 
     private final JPanel conversionPane;
+    private final Map<String, Command> commands;
     private final CurrenciesDialog fromCurrenciesDialog;
     private MoneyDisplay moneyDisplay;
     private MoneyDialog moneyDialog;
 
-    public SwingConversionPane(CurrenciesDialog fromCurrenciesDialog) {
+    public SwingConversionPane(Map<String, Command> commands, CurrenciesDialog fromCurrenciesDialog) {
+        this.commands = commands;
         this.fromCurrenciesDialog = fromCurrenciesDialog;
         conversionPane = new JPanel();
         conversionPane.add(introduceAmountLabel());
@@ -30,7 +35,13 @@ public class SwingConversionPane {
 
     private Component convertButton() {
         JButton button = new JButton("Convert");
-        button.addActionListener(e -> System.out.println("Mock implementation of convert button"));
+        button.addActionListener(e -> {
+            try {
+                commands.get("convert").execute();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         return button;
     }
 
