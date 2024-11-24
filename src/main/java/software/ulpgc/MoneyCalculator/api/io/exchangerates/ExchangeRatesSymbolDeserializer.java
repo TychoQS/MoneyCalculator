@@ -5,7 +5,7 @@ import software.ulpgc.MoneyCalculator.api.io.pojos.ExchangeRatesSymbolsGetRespon
 
 public class ExchangeRatesSymbolDeserializer implements SymbolDeserializer {
     @Override
-    public Object deserialize(String json) {
-        return new Gson().fromJson(json, ExchangeRatesSymbolsGetResponse.class);
+    public Object deserialize(String read) {
+        return new Gson().fromJson(read, ExchangeRatesSymbolsGetResponse.class);
     }
 }
