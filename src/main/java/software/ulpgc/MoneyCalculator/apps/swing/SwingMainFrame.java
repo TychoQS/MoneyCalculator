@@ -3,6 +3,7 @@ package software.ulpgc.MoneyCalculator.apps.swing;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
+import software.ulpgc.MoneyCalculator.mock.swing.SwingMockPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +22,9 @@ public class SwingMainFrame extends JFrame {
         super();
         this.currencies = currencies;
         initFrame();
-        this.add(BorderLayout.NORTH, titlePane());
-        this.add(BorderLayout.CENTER, centerPane());
+        this.add(titlePane());
+        this.add(centerPane());
+        //this.add(Box.createVerticalGlue());
         // TODO -> Añadir Panel para mostrar el MoneyDisplay
     }
 
@@ -43,7 +45,7 @@ public class SwingMainFrame extends JFrame {
         this.setSize(WIDTH, HEIGHT);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setLayout(new BorderLayout());
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -52,6 +54,7 @@ public class SwingMainFrame extends JFrame {
         centerPane.setLayout(new BorderLayout());
         centerPane.add(BorderLayout.NORTH, currenciesDialogPane());
         centerPane.add(BorderLayout.CENTER, conversionPane());
+        centerPane.add(BorderLayout.SOUTH, new SwingMockPanel().create());
         return centerPane;
     }
     private Component conversionPane() {
