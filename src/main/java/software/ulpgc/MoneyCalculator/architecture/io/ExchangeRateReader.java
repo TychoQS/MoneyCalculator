@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.api.io.currencylayer;
+package software.ulpgc.MoneyCalculator.architecture.io;
 
 import java.io.IOException;
 
