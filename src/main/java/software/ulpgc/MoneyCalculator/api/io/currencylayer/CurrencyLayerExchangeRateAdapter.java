@@ -20,8 +20,8 @@ public class CurrencyLayerExchangeRateAdapter implements ExchangeRateAdapter {
         return adapt(response.timestamp(), response.quotes(), fromCurrency, toCurrency);
     }
 
-    private ExchangeRate adapt(long timestampt, Map<String, Double> quotes, Currency from, Currency to) {
-        return new ExchangeRate(getLocalDate(timestampt), getRate(quotes), from, to);
+    private ExchangeRate adapt(long timestampt, Map<String, Double> quotes, Currency fromCurrency, Currency toCurrency) {
+        return new ExchangeRate(getLocalDate(timestampt), getRate(quotes), fromCurrency, toCurrency);
     }
 
     private double getRate(Map<String, Double> quotes) {
