@@ -11,16 +11,16 @@ import java.io.IOException;
 import java.util.List;
 
 public class SwingMain {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
         List<Currency> currencies = getCurrencies();
-        try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         SwingMainFrame mainFrame = new SwingMainFrame(currencies);
-        mainFrame.put("convert", new ConvertCommand(mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay(), getExchangeRateLoader()));
+        mainFrame.put("convert", getConvertCommand(mainFrame));
         mainFrame.setVisible(true);
+    }
+
+    private static ConvertCommand getConvertCommand(SwingMainFrame mainFrame) {
+        return new ConvertCommand(mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay(), getExchangeRateLoader());
     }
 
     private static ExchangeRateLoader getExchangeRateLoader() {
