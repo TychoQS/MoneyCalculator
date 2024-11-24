@@ -17,6 +17,8 @@ public class SwingMain {
         SwingMainFrame mainFrame = new SwingMainFrame(currencies);
         mainFrame.put("convert", getConvertCommand(mainFrame));
         mainFrame.setVisible(true);
+        // TODO -> Add exchangerate command
+        // TODO -> Think about to change the API where we get the currencies
     }
 
     private static ConvertCommand getConvertCommand(SwingMainFrame mainFrame) {
