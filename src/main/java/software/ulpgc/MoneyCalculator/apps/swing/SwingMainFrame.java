@@ -24,8 +24,6 @@ public class SwingMainFrame extends JFrame {
         initFrame();
         this.add(titlePane());
         this.add(centerPane());
-        this.add(new SwingMockPanel().create());
-        // TODO -> Añadir Panel para mostrar el MoneyDisplay
     }
 
     public CurrenciesDialog getFromCurrency() {
