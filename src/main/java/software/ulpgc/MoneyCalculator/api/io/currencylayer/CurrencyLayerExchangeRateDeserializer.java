@@ -7,6 +7,7 @@ import software.ulpgc.MoneyCalculator.architecture.io.ExchangeRateDeserializer;
 public class CurrencyLayerExchangeRateDeserializer implements ExchangeRateDeserializer {
     @Override
     public Object deserialize(String read) {
+        System.out.println(new Gson().fromJson(read, CurrencyLayerExchangeRateGetResponse.class));
         return new Gson().fromJson(read, CurrencyLayerExchangeRateGetResponse.class);
     }
 }

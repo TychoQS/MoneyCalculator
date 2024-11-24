@@ -1,5 +1,6 @@
 package software.ulpgc.MoneyCalculator.api.io.pojos;
 
-public record CurrencyLayerExchangeRateGetResponse(boolean success, String terms, String privacy, long timestampt, String source, ExchangeRate exchangeRate) {
-    public record ExchangeRate(double rate) {}
+import java.util.Map;
+
+public record CurrencyLayerExchangeRateGetResponse(boolean success, String terms, String privacy, long timestamp, String source, Map<String, Double> quotes) {
 }

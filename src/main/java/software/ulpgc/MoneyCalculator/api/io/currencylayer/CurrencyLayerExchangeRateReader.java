@@ -2,6 +2,7 @@ package software.ulpgc.MoneyCalculator.api.io.currencylayer;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
+import software.ulpgc.MoneyCalculator.architecture.io.ExchangeRateReader;
 
 import java.io.IOException;
 
@@ -14,6 +15,7 @@ public class CurrencyLayerExchangeRateReader implements ExchangeRateReader {
 
     @Override
     public String read(String fromCurrencyCode, String toCurrencyCode) throws IOException {
+        System.out.println("ENDPOINT URL: " + CurrencyLayerApi.getExchangeRateEndpoint(fromCurrencyCode, toCurrencyCode)); // TODO -> Remove this line
         return read(CurrencyLayerApi.getExchangeRateEndpoint(fromCurrencyCode, toCurrencyCode));
     }
 
