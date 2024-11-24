@@ -5,7 +5,6 @@ import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
-import software.ulpgc.MoneyCalculator.mock.swing.SwingMockPanel;
 
 import javax.swing.*;
 import java.awt.*;
