@@ -24,8 +24,7 @@ public class ConvertCommand implements Command{
 
     @Override
     public void execute() throws IOException {
-        if (ConversorValidator.validate(dialog) == false) return;
-        new DisplayConvertedMoneyCommand(display, getConvertedMoney()).execute();
+        if (ConversorValidator.validate(dialog)) new DisplayConvertedMoneyCommand(display, getConvertedMoney()).execute();;
     }
 
     private Money getConvertedMoney() throws IOException {
