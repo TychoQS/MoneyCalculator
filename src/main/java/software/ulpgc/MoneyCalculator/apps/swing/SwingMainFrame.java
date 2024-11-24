@@ -24,7 +24,7 @@ public class SwingMainFrame extends JFrame {
         initFrame();
         this.add(titlePane());
         this.add(centerPane());
-        //this.add(Box.createVerticalGlue());
+        this.add(new SwingMockPanel().create());
         // TODO -> Añadir Panel para mostrar el MoneyDisplay
     }
 
@@ -43,7 +43,6 @@ public class SwingMainFrame extends JFrame {
     private void initFrame() {
         this.setTitle(TITLE);
         this.setSize(WIDTH, HEIGHT);
-        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -54,7 +53,6 @@ public class SwingMainFrame extends JFrame {
         centerPane.setLayout(new BorderLayout());
         centerPane.add(BorderLayout.NORTH, currenciesDialogPane());
         centerPane.add(BorderLayout.CENTER, conversionPane());
-        centerPane.add(BorderLayout.SOUTH, new SwingMockPanel().create());
         return centerPane;
     }
     private Component conversionPane() {
