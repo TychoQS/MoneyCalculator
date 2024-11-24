@@ -6,6 +6,7 @@ import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolRe
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class MockMain {
@@ -17,5 +18,7 @@ public class MockMain {
         for (Currency currency : currencies) {
             System.out.println(currency);
         }
+        LocalDate localDate = LocalDate.EPOCH.plusDays(1732471204 / 86400);
+        System.out.println(localDate);
     }
 }
