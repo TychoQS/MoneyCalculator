@@ -71,7 +71,7 @@ public class SwingMainFrame extends JFrame {
     }
 
     private Component currenciesDialogPane() {
-        swingCurrenciesDialogsPane = new SwingCurrenciesDialogsPane(currencies);
+        swingCurrenciesDialogsPane = new SwingCurrenciesDialogsPane(currencies, commands);
         return swingCurrenciesDialogsPane.getCurrenciesDialogsPane();
     }
 

@@ -2,7 +2,9 @@ package software.ulpgc.MoneyCalculator.apps.swing;
 
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.*;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.*;
+import software.ulpgc.MoneyCalculator.architecture.control.Command;
 import software.ulpgc.MoneyCalculator.architecture.control.ConvertCommand;
+import software.ulpgc.MoneyCalculator.architecture.control.ExchangeCommand;
 import software.ulpgc.MoneyCalculator.architecture.io.*;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 
@@ -16,12 +18,17 @@ public class SwingMain {
         UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         SwingMainFrame mainFrame = new SwingMainFrame(currencies);
         mainFrame.put("convert", getConvertCommand(mainFrame));
+        mainFrame.put("exchange", getExchangeCommand(mainFrame));
         mainFrame.setVisible(true);
         // TODO -> Add exchangerate command
         // TODO -> Think about to change the API where we get the currencies
     }
 
-    private static ConvertCommand getConvertCommand(SwingMainFrame mainFrame) {
+    private static Command getExchangeCommand(SwingMainFrame mainFrame) {
+        return new ExchangeCommand(mainFrame.getFromCurrency(), mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay());
+    }
+
+    private static Command getConvertCommand(SwingMainFrame mainFrame) {
         return new ConvertCommand(mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay(), getExchangeRateLoader());
     }
 

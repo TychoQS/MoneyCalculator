@@ -1,11 +1,14 @@
 package software.ulpgc.MoneyCalculator.apps.swing;
 
+import software.ulpgc.MoneyCalculator.architecture.control.Command;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public class SwingCurrenciesDialogsPane {
 
@@ -13,9 +16,11 @@ public class SwingCurrenciesDialogsPane {
     private final CurrenciesDialog fromCurrency;
     private final CurrenciesDialog toCurrency;
     private final List<Currency> currencies;
+    private final Map<String, Command> commands;
 
-    public SwingCurrenciesDialogsPane(List<Currency> currencies) {
+    public SwingCurrenciesDialogsPane(List<Currency> currencies, Map<String, Command> commands) {
         this.currencies = currencies;
+        this.commands = commands;
         currenciesDialogsPane = new JPanel();
         fromCurrency = new SwingCurrenciesDialog();
         toCurrency = new SwingCurrenciesDialog();
@@ -36,8 +41,14 @@ public class SwingCurrenciesDialogsPane {
         return panel;
     }
     private Component exchangeButton() {
-        JButton button = new JButton("exchange");
-        button.addActionListener(e -> System.out.println("EXCHANGE BUTTON MOCK IMPLEMENTATION"));
+        JButton button = new JButton("Exchange");
+        button.addActionListener(e -> {
+            try {
+                commands.get("exchange").execute();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         return button;
     }
