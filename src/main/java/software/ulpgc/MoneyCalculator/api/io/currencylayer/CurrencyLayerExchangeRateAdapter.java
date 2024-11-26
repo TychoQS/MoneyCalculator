@@ -5,7 +5,6 @@ import software.ulpgc.MoneyCalculator.architecture.io.ExchangeRateAdapter;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.model.ExchangeRate;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
