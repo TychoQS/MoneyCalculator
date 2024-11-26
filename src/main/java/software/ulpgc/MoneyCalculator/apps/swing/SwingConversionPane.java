@@ -40,8 +40,7 @@ public class SwingConversionPane {
             try {
                 commands.get("convert").execute();
             } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+                new SwingErrorDialog("Alert", ex.getMessage());}
         });
         return button;
     }
