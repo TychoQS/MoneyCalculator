@@ -8,20 +8,21 @@ import java.io.IOException;
 
 public class ExchangeCommand implements Command {
 
-    private final CurrenciesDialog fromCurrency;
-    private final CurrenciesDialog toCurrency;
+    private final CurrenciesDialog fromCurrencyDialog;
+    private final CurrenciesDialog toCurrencyDialog;
     private final MoneyDialog dialog;
     private final MoneyDisplay display;
 
-    public ExchangeCommand(CurrenciesDialog fromCurrency, CurrenciesDialog toCurrency, MoneyDialog dialog, MoneyDisplay display) {
-        this.fromCurrency = fromCurrency;
-        this.toCurrency = toCurrency;
+    public ExchangeCommand(CurrenciesDialog fromCurrencyDialog, CurrenciesDialog toCurrencyDialog, MoneyDialog dialog, MoneyDisplay display) {
+        this.fromCurrencyDialog = fromCurrencyDialog;
+        this.toCurrencyDialog = toCurrencyDialog;
         this.dialog = dialog;
         this.display = display;
     }
 
     @Override
     public void execute() throws IOException {
-        System.out.println("Mock implementation exchange command");
+        new SwapCurrenciesDialogCommand(fromCurrencyDialog, toCurrencyDialog).execute();
+        // TODO -> Look how to implemet the exchange of Money
     }
 }
