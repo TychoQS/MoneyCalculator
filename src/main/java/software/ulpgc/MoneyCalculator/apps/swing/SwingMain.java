@@ -19,7 +19,6 @@ public class SwingMain {
         mainFrame.setVisible(true);
         // TODO -> Add exchangerate command
         // TODO -> Think about to change the API where we get the currencies
-        // TODO -> Inspect what happens when spamming convert button
     }
 
     private static ConvertCommand getConvertCommand(SwingMainFrame mainFrame) {
