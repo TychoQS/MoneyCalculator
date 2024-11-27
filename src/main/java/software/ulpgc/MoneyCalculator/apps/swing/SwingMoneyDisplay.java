@@ -22,5 +22,11 @@ public class SwingMoneyDisplay extends JLabel implements MoneyDisplay {
     @Override
     public void display(Money money) {
         this.setText(money.getAmount() + " " + money.getCurrency().getCode());
+        this.putClientProperty("money", money);
+    }
+
+    @Override
+    public Money getMoney() {
+        return (Money) this.getClientProperty("money");
     }
 }

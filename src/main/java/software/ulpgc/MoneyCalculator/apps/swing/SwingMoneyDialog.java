@@ -20,6 +20,15 @@ public class SwingMoneyDialog extends JTextField implements MoneyDialog {
         return new Money(toDouble(this.getText()), currenciesDialog.getSelectedCurrency());
     }
 
+    @Override
+    public void setMoney(Money money) {
+        this.setText(getAmount(money));
+    }
+
+    private static String getAmount(Money money) {
+        return String.valueOf(money.getAmount());
+    }
+
     private double toDouble(String amount) {
         return Double.parseDouble(amount);
     }

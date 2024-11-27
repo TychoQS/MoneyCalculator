@@ -4,4 +4,5 @@ import software.ulpgc.MoneyCalculator.architecture.model.Money;
 
 public interface MoneyDisplay {
     void display(Money money);
+    Money getMoney();
 }

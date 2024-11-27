@@ -20,7 +20,7 @@ public class SwingMain {
         mainFrame.put("convert", getConvertCommand(mainFrame));
         mainFrame.put("exchange", getExchangeCommand(mainFrame));
         mainFrame.setVisible(true);
-        // TODO -> Add exchangerate command
+        // TODO -> Inspect what happens about the precissions of numbers
         // TODO -> Think about to change the API where we get the currencies
     }
 

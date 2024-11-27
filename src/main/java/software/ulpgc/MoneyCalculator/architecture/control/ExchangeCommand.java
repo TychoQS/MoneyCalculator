@@ -22,6 +22,7 @@ public class ExchangeCommand implements Command {
 
     @Override
     public void execute() throws IOException {
+        new SwapMoneyDisplayAndDialogCommand(display, dialog).execute();
         new SwapCurrenciesDialogCommand(fromCurrencyDialog, toCurrencyDialog).execute();
         // TODO -> Look how to implemet the exchange of Money
     }
