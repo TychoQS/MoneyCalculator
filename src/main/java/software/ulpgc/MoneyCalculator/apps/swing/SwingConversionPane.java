@@ -23,7 +23,6 @@ public class SwingConversionPane {
         this.commands = commands;
         this.fromCurrenciesDialog = fromCurrenciesDialog;
         conversionPane = new JPanel();
-        conversionPane.add(introduceAmountLabel());
         conversionPane.add(moneyDialog());
         conversionPane.add(convertButton());
         conversionPane.add(moneyDisplay());
@@ -50,7 +49,7 @@ public class SwingConversionPane {
         return (Component) moneyDialog;
     }
 
-    private Component introduceAmountLabel() {
+    private Component introduceAmountLabel() { // TODO -> Delete if exists when finished
         JLabel label = new JLabel("Introduce money amount: ");
         label.setFont(getLabelFont());
         return label;
