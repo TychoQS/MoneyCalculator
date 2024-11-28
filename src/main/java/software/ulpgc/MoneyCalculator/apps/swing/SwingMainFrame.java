@@ -24,14 +24,15 @@ public class SwingMainFrame extends JFrame {
     public SwingMainFrame(List<Currency> currencies) throws HeadlessException {
         super();
         this.currencies = currencies;
-        this.commands = new HashMap<String, Command>();
+        this.commands = new HashMap<>();
         initFrame();
         this.add(titlePane());
         this.add(centerPane());
     }
 
-    public Command put(String key, Command value) {
-        return commands.put(key, value);
+    public SwingMainFrame put(String key, Command value) {
+        commands.put(key, value);
+        return this;
     }
 
     public CurrenciesDialog getFromCurrency() {
