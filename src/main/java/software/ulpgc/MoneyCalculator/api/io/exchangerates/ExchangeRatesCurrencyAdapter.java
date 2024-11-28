@@ -1,7 +1,6 @@
 package software.ulpgc.MoneyCalculator.api.io.exchangerates;
 
 import software.ulpgc.MoneyCalculator.api.io.pojos.ExchangeRatesSymbolsGetResponse;
-import software.ulpgc.MoneyCalculator.apps.swing.SwingMain;
 import software.ulpgc.MoneyCalculator.architecture.io.deserializers.CsvCodeAndSymbolDeserializer;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.CurrencyAdapter;
 import software.ulpgc.MoneyCalculator.architecture.io.CurrencyCodesToSymbols;
@@ -22,8 +21,8 @@ public class ExchangeRatesCurrencyAdapter implements CurrencyAdapter {
         codeToSymbols = new FileCurrencyCodeToSymbolListLoader(getResource(), new CsvCodeAndSymbolDeserializer()).load();
     }
 
-    private static InputStream getResource() {
-        return SwingMain.class.getResourceAsStream("/currency_code_to_symbol.csv");
+    private static InputStream getResource() { // TODO -> Should remove it and find another form
+        return ExchangeRatesCurrencyAdapter.class.getResourceAsStream("/currency_code_to_symbol.csv");
     }
 
     @Override
