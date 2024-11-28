@@ -3,16 +3,24 @@ package software.ulpgc.MoneyCalculator.architecture.control;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
-public class SwapMoneyDisplayAndDialogValidator { // TODO -> Try to refact or rethink (Extract to methods to facilitate abstraction)
+public class SwapMoneyDisplayAndDialogValidator { // TODO -> Try to rethink implementation
 
     public static boolean validate(MoneyDialog dialog, MoneyDisplay display) {
         try {
-            dialog.getMoney();
-            display.getMoney();
-            if (display.getMoney() == null) throw new NumberFormatException();
-            return true;
+            return notEmpty(display, dialog);
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    private static boolean notEmpty(MoneyDisplay display, MoneyDialog dialog) {
+        displayingNull(display);
+        display.getMoney();
+        dialog.getMoney();
+        return true;
+    }
+
+    private static void displayingNull(MoneyDisplay display) {
+        if (display.getMoney() == null) throw new NumberFormatException();
     }
 }

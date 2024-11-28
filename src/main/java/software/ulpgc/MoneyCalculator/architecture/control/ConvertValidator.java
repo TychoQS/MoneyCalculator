@@ -3,12 +3,16 @@ package software.ulpgc.MoneyCalculator.architecture.control;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 
 public class ConvertValidator {
-    public static boolean validate(MoneyDialog dialog) { // TODO -> Try to refact or rethink (Extract to methods to facilitate abstraction)
+    public static boolean validate(MoneyDialog dialog) { // TODO -> Try to rethink implementation
         try {
-            dialog.getMoney();
-            return true;
+            return notEmpty(dialog);
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    private static boolean notEmpty(MoneyDialog dialog) {
+        dialog.getMoney();
+        return true;
     }
 }
