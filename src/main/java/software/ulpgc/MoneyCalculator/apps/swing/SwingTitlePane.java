@@ -7,9 +7,10 @@ public class SwingTitlePane {
     private final JPanel titlePane;
     private JLabel titleLabel;
 
-    public SwingTitlePane() {
+    public SwingTitlePane()  {
         titlePane = new JPanel();
         titlePane.add(getTitle());
+        // TODO -> Fix Title Font
     }
 
     private Component getTitle() {
@@ -19,7 +20,7 @@ public class SwingTitlePane {
     }
 
     private Font getFont() {
-        return new Font("Montserrat", Font.BOLD|Font.ITALIC, adaptFontSize());
+        return new Font("Power Red and Green", Font.BOLD, adaptFontSize());
     }
 
     private int adaptFontSize() {
