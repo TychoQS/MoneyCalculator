@@ -2,13 +2,12 @@ package software.ulpgc.MoneyCalculator.api.io.exchangerates;
 
 import software.ulpgc.MoneyCalculator.api.io.pojos.ExchangeRatesSymbolsGetResponse;
 import software.ulpgc.MoneyCalculator.apps.swing.SwingMain;
-import software.ulpgc.MoneyCalculator.architecture.io.CsvCodeAndSymbolDeserializer;
-import software.ulpgc.MoneyCalculator.architecture.io.CurrencyAdapter;
+import software.ulpgc.MoneyCalculator.architecture.io.deserializers.CsvCodeAndSymbolDeserializer;
+import software.ulpgc.MoneyCalculator.architecture.io.adapters.CurrencyAdapter;
 import software.ulpgc.MoneyCalculator.architecture.io.CurrencyCodesToSymbols;
-import software.ulpgc.MoneyCalculator.architecture.io.FileCurrencyCodeToSymbolListLoader;
+import software.ulpgc.MoneyCalculator.architecture.io.loaders.FileCurrencyCodeToSymbolListLoader;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;

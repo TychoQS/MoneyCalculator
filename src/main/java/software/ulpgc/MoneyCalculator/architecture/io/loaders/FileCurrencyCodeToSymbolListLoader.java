@@ -1,4 +1,7 @@
-package software.ulpgc.MoneyCalculator.architecture.io;
+package software.ulpgc.MoneyCalculator.architecture.io.loaders;
+
+import software.ulpgc.MoneyCalculator.architecture.io.CurrencyCodesToSymbols;
+import software.ulpgc.MoneyCalculator.architecture.io.deserializers.CodeAndSymbolDeserializer;
 
 import java.io.*;
 import java.util.HashMap;
@@ -8,10 +11,10 @@ import java.util.Map;
 public class FileCurrencyCodeToSymbolListLoader implements CurrencyCodesToSymbolsLoader {
     public static final int CODE = 0;
     public static final int SYMBOL = 1;
-    private final codeAndSymbolDeserializer deserializer;
+    private final CodeAndSymbolDeserializer deserializer;
     private final InputStream fileAsInputStream;
 
-    public FileCurrencyCodeToSymbolListLoader(InputStream fileAsInputStream, codeAndSymbolDeserializer deserializer) {
+    public FileCurrencyCodeToSymbolListLoader(InputStream fileAsInputStream, CodeAndSymbolDeserializer deserializer) {
         this.fileAsInputStream = fileAsInputStream;
         this.deserializer = deserializer;
     }

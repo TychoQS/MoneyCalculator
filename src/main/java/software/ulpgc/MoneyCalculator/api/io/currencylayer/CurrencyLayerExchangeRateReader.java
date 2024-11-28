@@ -2,7 +2,7 @@ package software.ulpgc.MoneyCalculator.api.io.currencylayer;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
-import software.ulpgc.MoneyCalculator.architecture.io.ExchangeRateReader;
+import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateReader;
 
 import java.io.IOException;
 

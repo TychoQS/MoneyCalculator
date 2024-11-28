@@ -1,6 +1,6 @@
 package software.ulpgc.MoneyCalculator.architecture.control;
 
-import software.ulpgc.MoneyCalculator.architecture.io.ExchangeRateLoader;
+import software.ulpgc.MoneyCalculator.architecture.io.loaders.ExchangeRateLoader;
 import software.ulpgc.MoneyCalculator.architecture.model.Money;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;

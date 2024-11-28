@@ -1,7 +1,7 @@
 package software.ulpgc.MoneyCalculator.api.io.exchangerates;
 
-import software.ulpgc.MoneyCalculator.architecture.io.CurrenciesLoader;
-import software.ulpgc.MoneyCalculator.architecture.io.CurrencyAdapter;
+import software.ulpgc.MoneyCalculator.architecture.io.loaders.CurrenciesLoader;
+import software.ulpgc.MoneyCalculator.architecture.io.adapters.CurrencyAdapter;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 
 import java.util.List;

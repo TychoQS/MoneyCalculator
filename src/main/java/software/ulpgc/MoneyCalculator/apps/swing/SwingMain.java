@@ -5,7 +5,11 @@ import software.ulpgc.MoneyCalculator.api.io.exchangerates.*;
 import software.ulpgc.MoneyCalculator.architecture.control.Command;
 import software.ulpgc.MoneyCalculator.architecture.control.ConvertCommand;
 import software.ulpgc.MoneyCalculator.architecture.control.ExchangeCommand;
-import software.ulpgc.MoneyCalculator.architecture.io.*;
+import software.ulpgc.MoneyCalculator.architecture.io.adapters.CurrencyAdapter;
+import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateAdapter;
+import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateReader;
+import software.ulpgc.MoneyCalculator.architecture.io.deserializers.ExchangeRateDeserializer;
+import software.ulpgc.MoneyCalculator.architecture.io.loaders.ExchangeRateLoader;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 
 import javax.swing.*;

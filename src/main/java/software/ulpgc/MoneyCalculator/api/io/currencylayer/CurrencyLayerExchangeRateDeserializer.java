@@ -2,7 +2,7 @@ package software.ulpgc.MoneyCalculator.api.io.currencylayer;
 
 import com.google.gson.Gson;
 import software.ulpgc.MoneyCalculator.api.io.pojos.CurrencyLayerExchangeRateGetResponse;
-import software.ulpgc.MoneyCalculator.architecture.io.ExchangeRateDeserializer;
+import software.ulpgc.MoneyCalculator.architecture.io.deserializers.ExchangeRateDeserializer;
 
 public class CurrencyLayerExchangeRateDeserializer implements ExchangeRateDeserializer {
     @Override

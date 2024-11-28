@@ -1,8 +1,8 @@
-package software.ulpgc.MoneyCalculator.architecture.io;
+package software.ulpgc.MoneyCalculator.architecture.io.deserializers;
 
 import java.util.List;
 
-public class CsvCodeAndSymbolDeserializer implements codeAndSymbolDeserializer {
+public class CsvCodeAndSymbolDeserializer implements CodeAndSymbolDeserializer {
     @Override
     public List<String> deserialize(String line) {
         return deserialize(line.split(","));
