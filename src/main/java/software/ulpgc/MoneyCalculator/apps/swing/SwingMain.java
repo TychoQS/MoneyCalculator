@@ -13,17 +13,18 @@ import software.ulpgc.MoneyCalculator.architecture.io.loaders.ExchangeRateLoader
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
 public class SwingMain {
-    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException, IOException, FontFormatException {
         List<Currency> currencies = getCurrencies();
         UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         SwingMainFrame mainFrame = new SwingMainFrame(currencies);
-        mainFrame.put("convert", getConvertCommand(mainFrame));
-        mainFrame.put("exchange", getExchangeCommand(mainFrame));
-        mainFrame.setVisible(true);
+        mainFrame.put("convert", getConvertCommand(mainFrame))
+                 .put("exchange", getExchangeCommand(mainFrame))
+                 .setVisible(true);
         // TODO -> Inspect what happens about the precissions of numbers
         // TODO -> Think about to change the API where we get the currencies
     }
