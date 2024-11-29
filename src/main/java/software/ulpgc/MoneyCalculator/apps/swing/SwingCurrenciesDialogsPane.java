@@ -29,17 +29,6 @@ public class SwingCurrenciesDialogsPane {
         currenciesDialogsPane.add((Component) toCurrency);
     }
 
-    private Component fromCurrencyPanel() {
-        JPanel panel = new JPanel();
-        panel.add((Component) fromCurrency);
-        return panel;
-    }
-
-    private Component toCurrencyPanel() {
-        JPanel panel = new JPanel();
-        panel.add((Component) toCurrency);
-        return panel;
-    }
     private Component exchangeButton() {
         JButton button = new JButton("Exchange");
         button.addActionListener(e -> {
@@ -51,6 +40,18 @@ public class SwingCurrenciesDialogsPane {
         });
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         return button;
+    }
+
+    private Component fromCurrencyPanel() {
+        JPanel panel = new JPanel();
+        panel.add((Component) fromCurrency);
+        return panel;
+    }
+
+    private Component toCurrencyPanel() {
+        JPanel panel = new JPanel();
+        panel.add((Component) toCurrency);
+        return panel;
     }
 
     public JPanel getCurrenciesDialogsPane() {

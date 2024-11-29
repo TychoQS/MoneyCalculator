@@ -28,9 +28,9 @@ public class SwingConversionPane {
         conversionPane.add(moneyDisplay());
     }
 
-    private Component moneyDisplay() {
-        this.moneyDisplay = new SwingMoneyDisplay();
-        return (Component) moneyDisplay;
+    private Component moneyDialog() {
+        moneyDialog = new SwingMoneyDialog(fromCurrenciesDialog);
+        return (Component) moneyDialog;
     }
 
     private Component convertButton() {
@@ -44,9 +44,9 @@ public class SwingConversionPane {
         return button;
     }
 
-    private Component moneyDialog() {
-        moneyDialog = new SwingMoneyDialog(fromCurrenciesDialog);
-        return (Component) moneyDialog;
+    private Component moneyDisplay() {
+        this.moneyDisplay = new SwingMoneyDisplay();
+        return (Component) moneyDisplay;
     }
 
     private Component introduceAmountLabel() { // TODO -> Delete if exists when finished

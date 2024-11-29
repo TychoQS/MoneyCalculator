@@ -30,13 +30,43 @@ public class SwingMainFrame extends JFrame {
         this.add(centerPane());
     }
 
-    public SwingMainFrame put(String key, Command value) {
-        commands.put(key, value);
-        return this;
+    private void initFrame() {
+        this.setTitle(TITLE);
+        this.setSize(WIDTH, HEIGHT);
+        this.setLocationRelativeTo(null);
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    private Component titlePane() {
+        return new SwingTitlePane().getTitlePane();
+    }
+
+    private Component centerPane() {
+        JPanel centerPane = new JPanel();
+        centerPane.setLayout(new BorderLayout());
+        centerPane.add(BorderLayout.NORTH, currenciesDialogPane());
+        centerPane.add(BorderLayout.CENTER, conversionPane());
+        return centerPane;
+    }
+
+    private Component currenciesDialogPane() {
+        swingCurrenciesDialogsPane = new SwingCurrenciesDialogsPane(currencies, commands);
+        return swingCurrenciesDialogsPane.getCurrenciesDialogsPane();
+    }
+
+    private Component conversionPane() {
+        swingConversionPane = new SwingConversionPane(commands, getFromCurrency());
+        return swingConversionPane.getConversionPane();
     }
 
     public CurrenciesDialog getFromCurrency() {
         return swingCurrenciesDialogsPane.getFromCurrency();
+    }
+
+    public SwingMainFrame put(String key, Command value) {
+        commands.put(key, value);
+        return this;
     }
 
     public CurrenciesDialog getToCurrency() {
@@ -49,34 +79,5 @@ public class SwingMainFrame extends JFrame {
 
     public MoneyDisplay getMoneyDisplay() {
         return swingConversionPane.getMoneyDisplay();
-    }
-
-    private void initFrame() {
-        this.setTitle(TITLE);
-        this.setSize(WIDTH, HEIGHT);
-        this.setLocationRelativeTo(null);
-        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
-
-    private Component centerPane() {
-        JPanel centerPane = new JPanel();
-        centerPane.setLayout(new BorderLayout());
-        centerPane.add(BorderLayout.NORTH, currenciesDialogPane());
-        centerPane.add(BorderLayout.CENTER, conversionPane());
-        return centerPane;
-    }
-    private Component conversionPane() {
-        swingConversionPane = new SwingConversionPane(commands, getFromCurrency());
-        return swingConversionPane.getConversionPane();
-    }
-
-    private Component currenciesDialogPane() {
-        swingCurrenciesDialogsPane = new SwingCurrenciesDialogsPane(currencies, commands);
-        return swingCurrenciesDialogsPane.getCurrenciesDialogsPane();
-    }
-
-    private Component titlePane() {
-        return new SwingTitlePane().getTitlePane();
     }
 }
