@@ -1,7 +1,7 @@
 package software.ulpgc.MoneyCalculator.api.io.currencylayer;
 
 public class CurrencyLayerApi {
-    public static String apiKey= "d103d311647949d609482f4c93f62012";
+    public static String apiKey= "6782a36d13d4a870642120dff730a5c2";
     private static String ExchangeRateEndpoint = "https://api.currencylayer.com/live?access_key=%s&source=%s&currencies=%s";
 
     public static String getExchangeRateEndpoint(String fromCurrency, String toCurrency) {
