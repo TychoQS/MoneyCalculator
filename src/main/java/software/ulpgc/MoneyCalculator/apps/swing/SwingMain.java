@@ -27,6 +27,7 @@ public class SwingMain {
                  .setVisible(true);
         // TODO -> Inspect what happens about the precissions of numbers
         // TODO -> Think about to change the API where we get the currencies
+        // TODO -> Look about the response of API when key is not valid
     }
 
     private static Command getExchangeCommand(SwingMainFrame mainFrame) {
