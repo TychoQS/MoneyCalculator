@@ -12,6 +12,8 @@ import java.util.Map;
 
 public class SwingCurrenciesDialogsPane {
 
+    public static final ImageIcon BUTTON_ICON = new ImageIcon(SwingConversionPane.class.getResource("/exchange_arrows.png"));
+    public static final String EXCHANGE_COMMAND = "exchange";
     private final JPanel currenciesDialogsPane;
     private final CurrenciesDialog fromCurrency;
     private final CurrenciesDialog toCurrency;
@@ -24,28 +26,29 @@ public class SwingCurrenciesDialogsPane {
         currenciesDialogsPane = new JPanel();
         fromCurrency = new SwingCurrenciesDialog();
         toCurrency = new SwingCurrenciesDialog();
-        currenciesDialogsPane.add((Component) fromCurrency);
+        currenciesDialogsPane.add(fromCurrencyPanel());
         currenciesDialogsPane.add(exchangeButton());
-        currenciesDialogsPane.add((Component) toCurrency);
-    }
-
-    private Component exchangeButton() {
-        JButton button = new JButton("Exchange");
-        button.addActionListener(e -> {
-            try {
-                commands.get("exchange").execute();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        return button;
+        currenciesDialogsPane.add(toCurrencyPanel());
     }
 
     private Component fromCurrencyPanel() {
         JPanel panel = new JPanel();
         panel.add((Component) fromCurrency);
         return panel;
+    }
+
+    private Component exchangeButton() {
+        JButton button = new JButton();
+        button.setIcon(BUTTON_ICON);
+        button.addActionListener(e -> {
+            try {
+                commands.get(EXCHANGE_COMMAND).execute();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return button;
     }
 
     private Component toCurrencyPanel() {
