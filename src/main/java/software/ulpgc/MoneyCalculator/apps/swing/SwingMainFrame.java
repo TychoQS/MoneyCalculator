@@ -13,9 +13,11 @@ import java.util.List;
 
 public class SwingMainFrame extends JFrame {
 
-    public static final int WIDTH = 800;
+    public static final int WIDTH = 1000;
     public static final int HEIGHT = 800;
     public static final String TITLE = "Money Calculator";
+    public static final String JMENU_ITEM_TEXT = "Date Money Conversion";
+    public static final String JMENU_TEXT = "Date Operations";
     private final List<Currency> currencies;
     private final HashMap<String, Command> commands;
     private SwingCurrenciesDialogsPane swingCurrenciesDialogsPane;
@@ -69,7 +71,7 @@ public class SwingMainFrame extends JFrame {
     }
 
     private Component getJMenu() {
-        JMenu jMenu = new JMenu("Date Operations");
+        JMenu jMenu = new JMenu(JMENU_TEXT);
         jMenu.add(buildJMenuItem());
         return jMenu;
     }
@@ -79,7 +81,7 @@ public class SwingMainFrame extends JFrame {
     }
 
     private JMenuItem buildJMenuItem() {
-        JMenuItem jMenuItem = new JMenuItem("Date Money Conversion");
+        JMenuItem jMenuItem = new JMenuItem(JMENU_ITEM_TEXT);
         jMenuItem.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jMenuItem.addActionListener(e -> new SwingErrorDialog("Mock Implementation", "Mock Implementation"));
         return jMenuItem;
