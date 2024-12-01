@@ -12,7 +12,6 @@ import java.util.Map;
 
 public class SwingConversionPane {
 
-    public static final int FONT_SIZE = 15;
     private final JPanel conversionPane;
     private final Map<String, Command> commands;
     private final CurrenciesDialog fromCurrenciesDialog;
