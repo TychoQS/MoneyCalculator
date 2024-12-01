@@ -35,7 +35,11 @@ public class CurrencyLayerExchangeRateAdapter implements ExchangeRateAdapter {
     }
 
     private double getRate(Map<String, Double> quotes, Currency fromCurrency, Currency toCurrency) {
-        return quotes.get(buildKey(fromCurrency, toCurrency));
+        try {
+            return quotes.get(buildKey(fromCurrency, toCurrency));
+        } catch (NullPointerException ex) {
+            return 1;
+        }
     }
 
     private int getCode(CurrencyLayerGetResponseError responseError) {
