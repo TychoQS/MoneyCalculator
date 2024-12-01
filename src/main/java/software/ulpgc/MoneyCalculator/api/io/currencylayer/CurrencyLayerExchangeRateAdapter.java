@@ -1,6 +1,7 @@
 package software.ulpgc.MoneyCalculator.api.io.currencylayer;
 
 import software.ulpgc.MoneyCalculator.api.io.pojos.CurrencyLayerExchangeRateGetResponse;
+import software.ulpgc.MoneyCalculator.api.io.pojos.CurrencyLayerGetResponseError;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateAdapter;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.model.ExchangeRate;
@@ -11,29 +12,45 @@ import java.util.Map;
 
 public class CurrencyLayerExchangeRateAdapter implements ExchangeRateAdapter {
 
-
-    public CurrencyLayerExchangeRateAdapter() {
-    }
-
     @Override
     public ExchangeRate adapt(Object object, Currency fromCurrency, Currency toCurrency) throws IOException {
-        CurrencyLayerExchangeRateGetResponse response = (CurrencyLayerExchangeRateGetResponse) object;
-        return adapt(response.timestamp(), response.quotes(), fromCurrency, toCurrency);
-    }
-
-    private ExchangeRate adapt(long timestampt, Map<String, Double> quotes, Currency fromCurrency, Currency toCurrency) throws IOException {
-        return new ExchangeRate(getLocalDate(timestampt), getRate(quotes), fromCurrency, toCurrency);
-    }
-
-    private double getRate(Map<String, Double> quotes) throws IOException {
         try {
-            return quotes.isEmpty() ? 1 : quotes.entrySet().iterator().next().getValue();
-        } catch (NullPointerException ex) {
-            throw new IOException("Too many request. Don't spam convert button");
+            CurrencyLayerExchangeRateGetResponse response = (CurrencyLayerExchangeRateGetResponse) object;
+            return adapt(response.timestamp(), response.quotes(), fromCurrency, toCurrency);
+        } catch (ClassCastException ex) {
+            throw new IOException(buildErrorMessage((CurrencyLayerGetResponseError) object));
         }
     }
 
-    private LocalDate getLocalDate(long timestampt) {
-        return LocalDate.EPOCH.plusDays(timestampt/86400);
+    private ExchangeRate adapt(long timestamp, Map<String, Double> quotes, Currency fromCurrency, Currency toCurrency) {
+        return new ExchangeRate(getLocalDate(timestamp), getRate(quotes, fromCurrency, toCurrency), fromCurrency, toCurrency);
+    }
+
+    private String buildErrorMessage(CurrencyLayerGetResponseError responseError) {
+        return "CurrencyLayerAPIError:" + getCode(responseError) + " " + getMessage(responseError);
+    }
+
+    private LocalDate getLocalDate(long timestamp) {
+        return LocalDate.EPOCH.plusDays(getDays(timestamp));
+    }
+
+    private double getRate(Map<String, Double> quotes, Currency fromCurrency, Currency toCurrency) {
+        return quotes.get(buildKey(fromCurrency, toCurrency));
+    }
+
+    private int getCode(CurrencyLayerGetResponseError responseError) {
+        return responseError.error().code();
+    }
+
+    private String getMessage(CurrencyLayerGetResponseError responseError) {
+        return responseError.error().info();
+    }
+
+    private long getDays(long timestamp) {
+        return timestamp / 86400;
+    }
+
+    private String buildKey(Currency fromCurrency, Currency toCurrency) {
+        return fromCurrency.getCode() + toCurrency.getCode();
     }
 }
