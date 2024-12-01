@@ -49,16 +49,6 @@ public class SwingConversionPane {
         return (Component) moneyDisplay;
     }
 
-    private Component introduceAmountLabel() { // TODO -> Delete if exists when finished
-        JLabel label = new JLabel("Introduce money amount: ");
-        label.setFont(getLabelFont());
-        return label;
-    }
-
-    private Font getLabelFont() {
-        return new Font("Montserrat", Font.BOLD, FONT_SIZE);
-    }
-
     protected JPanel getConversionPane() {
         return conversionPane;
     }
