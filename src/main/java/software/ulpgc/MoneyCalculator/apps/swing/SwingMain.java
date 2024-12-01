@@ -25,24 +25,9 @@ public class SwingMain {
         mainFrame.put("convert", getConvertCommand(mainFrame))
                  .put("exchange", getExchangeCommand(mainFrame))
                  .setVisible(true);
+        // TODO -> Implement time conversion
         // TODO -> Inspect what happens about the precissions of numbers
         // TODO -> Think about to change the API where we get the currencies
-        // TODO -> Look about the response of API when key is not valid
-    }
-
-    private static Command getExchangeCommand(SwingMainFrame mainFrame) {
-        return new ExchangeCommand(mainFrame.getFromCurrency(), mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay());
-    }
-
-    private static Command getConvertCommand(SwingMainFrame mainFrame) {
-        return new ConvertCommand(mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay(), getExchangeRateLoader());
-    }
-
-    private static ExchangeRateLoader getExchangeRateLoader() {
-        ExchangeRateReader reader = new CurrencyLayerExchangeRateReader();
-        ExchangeRateDeserializer deserializer = new CurrencyLayerExchangeRateDeserializer();
-        ExchangeRateAdapter adapter = new CurrencyLayerExchangeRateAdapter();
-        return new CurrencyLayerExchangeRateLoader(reader, deserializer, adapter);
     }
 
     private static List<Currency> getCurrencies() throws IOException {
@@ -50,5 +35,20 @@ public class SwingMain {
         SymbolDeserializer deserializer = new ExchangeRatesSymbolDeserializer();
         CurrencyAdapter adapter = new ExchangeRatesCurrencyAdapter();
         return new ExchangeRatesCurrenciesLoader(reader, deserializer, adapter).loadCurrencies();
+    }
+
+    private static Command getConvertCommand(SwingMainFrame mainFrame) {
+        return new ConvertCommand(mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay(), getExchangeRateLoader());
+    }
+
+    private static Command getExchangeCommand(SwingMainFrame mainFrame) {
+        return new ExchangeCommand(mainFrame.getFromCurrency(), mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay());
+    }
+
+    private static ExchangeRateLoader getExchangeRateLoader() {
+        ExchangeRateReader reader = new CurrencyLayerExchangeRateReader();
+        ExchangeRateDeserializer deserializer = new CurrencyLayerExchangeRateDeserializer();
+        ExchangeRateAdapter adapter = new CurrencyLayerExchangeRateAdapter();
+        return new CurrencyLayerExchangeRateLoader(reader, deserializer, adapter);
     }
 }

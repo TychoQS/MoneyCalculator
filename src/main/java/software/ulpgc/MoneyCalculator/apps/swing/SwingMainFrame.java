@@ -20,6 +20,7 @@ public class SwingMainFrame extends JFrame {
     private final HashMap<String, Command> commands;
     private SwingCurrenciesDialogsPane swingCurrenciesDialogsPane;
     private SwingConversionPane swingConversionPane;
+    private JMenuBar jMenuBar;
 
     public SwingMainFrame(List<Currency> currencies) throws HeadlessException {
         super();
@@ -36,6 +37,7 @@ public class SwingMainFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setJMenuBar(buildJMenuBar());
     }
 
     private Component titlePane() {
@@ -50,6 +52,12 @@ public class SwingMainFrame extends JFrame {
         return centerPane;
     }
 
+    private JMenuBar buildJMenuBar() {
+        this.jMenuBar = new JMenuBar();
+        this.jMenuBar.add(getJMenu());
+        return jMenuBar;
+    }
+
     private Component currenciesDialogPane() {
         swingCurrenciesDialogsPane = new SwingCurrenciesDialogsPane(currencies, commands);
         return swingCurrenciesDialogsPane.getCurrenciesDialogsPane();
@@ -60,8 +68,21 @@ public class SwingMainFrame extends JFrame {
         return swingConversionPane.getConversionPane();
     }
 
+    private Component getJMenu() {
+        JMenu jMenu = new JMenu("Date Operations");
+        jMenu.add(buildJMenuItem());
+        return jMenu;
+    }
+
     public CurrenciesDialog getFromCurrency() {
         return swingCurrenciesDialogsPane.getFromCurrency();
+    }
+
+    private JMenuItem buildJMenuItem() {
+        JMenuItem jMenuItem = new JMenuItem("Date Money Conversion");
+        jMenuItem.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jMenuItem.addActionListener(e -> new SwingErrorDialog("Mock Implementation", "Mock Implementation"));
+        return jMenuItem;
     }
 
     public SwingMainFrame put(String key, Command value) {
