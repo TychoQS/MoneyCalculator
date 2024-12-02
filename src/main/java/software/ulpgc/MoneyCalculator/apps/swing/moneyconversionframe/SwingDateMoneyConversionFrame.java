@@ -58,14 +58,14 @@ public class SwingDateMoneyConversionFrame extends JFrame {
     }
 
     private Component northPane(List<Currency> currencies) {
-        JPanel panel = new JPanel();
+        JPanel northPane = new JPanel();
         fromCurrenciesDialog = new SwingCurrenciesDialog();
         fromCurrenciesDialog.display(currencies);
         toCurrenciesDialog = new SwingCurrenciesDialog();
         toCurrenciesDialog.display(currencies);
-        panel.add((Component) fromCurrenciesDialog);
-        panel.add((Component) toCurrenciesDialog);
-        return panel;
+        northPane.add((Component) fromCurrenciesDialog);
+        northPane.add((Component) toCurrenciesDialog);
+        return northPane;
     }
 
     private Component convertButton() {
