@@ -3,25 +3,51 @@ package software.ulpgc.MoneyCalculator.apps.swing.moneyconversionframe;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesCurrencyAdapter;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolDeserializer;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolReader;
+import software.ulpgc.MoneyCalculator.apps.swing.displays.SwingMoneyDisplay;
 import software.ulpgc.MoneyCalculator.apps.swing.dialogs.SwingCurrenciesDialog;
+import software.ulpgc.MoneyCalculator.apps.swing.dialogs.SwingErrorDialog;
+import software.ulpgc.MoneyCalculator.apps.swing.dialogs.SwingMoneyDialog;
+import software.ulpgc.MoneyCalculator.architecture.control.Command;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
+import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
+import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SwingDateMoneyConversionFrame extends JFrame {
 
+    private final Map<String, Command> commands;
     private CurrenciesDialog fromCurrenciesDialog;
     private CurrenciesDialog toCurrenciesDialog;
+    private MoneyDialog moneyDialog;
+    private MoneyDisplay moneyDisplay;
 
-    public SwingDateMoneyConversionFrame(List<Currency> currencies) throws HeadlessException {
+    public SwingDateMoneyConversionFrame(List<Currency> currencies, Map<String, Command> commands) throws HeadlessException {
+        this.commands = commands;
         initFrame();
         this.add(BorderLayout.NORTH, northPane(currencies));
+        this.add(BorderLayout.CENTER, centerPane());
         this.setVisible(true);
     }
+
+    private Component centerPane() {
+        JPanel centerPane = new JPanel();
+        moneyDialog = new SwingMoneyDialog(this.fromCurrenciesDialog);
+        moneyDisplay = new SwingMoneyDisplay();
+        centerPane.add((Component) moneyDialog);
+        centerPane.add(convertButton());
+        centerPane.add((Component) moneyDisplay);
+        return centerPane;
+
+    }
+
+
 
     private void initFrame() {
         this.setTitle("Date conversion");
@@ -42,12 +68,19 @@ public class SwingDateMoneyConversionFrame extends JFrame {
         return panel;
     }
 
+    private Component convertButton() {
+        JButton button = new JButton("Convert");
+        button.addActionListener(e -> new SwingErrorDialog("MOCK", "MOCK IMPLEMENTATION")); // TODO -> Implement feature
+        return button;
+    }
+
     public static void main(String[] args) throws IOException {
         ExchangeRatesSymbolReader reader = new ExchangeRatesSymbolReader();
         ExchangeRatesSymbolDeserializer deserializer = new ExchangeRatesSymbolDeserializer();
         ExchangeRatesCurrencyAdapter adapter = new ExchangeRatesCurrencyAdapter();
         List<software.ulpgc.MoneyCalculator.architecture.model.Currency> currencies = adapter.adapt(deserializer.deserialize(reader.read()));
-        SwingDateMoneyConversionFrame frame = new SwingDateMoneyConversionFrame(currencies);
+        HashMap<String, Command> map = new HashMap<>();
+        SwingDateMoneyConversionFrame frame = new SwingDateMoneyConversionFrame(currencies, map);
     }
 
     public CurrenciesDialog getFromCurrenciesDialog() {

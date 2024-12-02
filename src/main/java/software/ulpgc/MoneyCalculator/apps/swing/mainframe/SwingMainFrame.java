@@ -86,7 +86,7 @@ public class SwingMainFrame extends JFrame {
         JMenuItem jMenuItem = new JMenuItem(JMENU_ITEM_TEXT);
         jMenuItem.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jMenuItem.addActionListener(e -> {
-            swingDateMoneyConversionFrame = new SwingDateMoneyConversionFrame(currencies);
+            swingDateMoneyConversionFrame = new SwingDateMoneyConversionFrame(currencies, commands);
         });
         return jMenuItem;
     }
