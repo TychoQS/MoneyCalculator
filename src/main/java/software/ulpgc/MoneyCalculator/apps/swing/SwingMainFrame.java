@@ -23,6 +23,7 @@ public class SwingMainFrame extends JFrame {
     private SwingCurrenciesDialogsPane swingCurrenciesDialogsPane;
     private SwingConversionPane swingConversionPane;
     private JMenuBar jMenuBar;
+    private SwingDateMoneyConversionFrame swingDateMoneyConversionFrame;
 
     public SwingMainFrame(List<Currency> currencies) throws HeadlessException {
         super();
@@ -83,7 +84,9 @@ public class SwingMainFrame extends JFrame {
     private JMenuItem buildJMenuItem() {
         JMenuItem jMenuItem = new JMenuItem(JMENU_ITEM_TEXT);
         jMenuItem.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jMenuItem.addActionListener(e -> new SwingErrorDialog("Mock Implementation", "Mock Implementation"));
+        jMenuItem.addActionListener(e -> {
+            swingDateMoneyConversionFrame = new SwingDateMoneyConversionFrame(currencies);
+        });
         return jMenuItem;
     }
 
@@ -102,5 +105,9 @@ public class SwingMainFrame extends JFrame {
 
     public MoneyDisplay getMoneyDisplay() {
         return swingConversionPane.getMoneyDisplay();
+    }
+
+    public CurrenciesDialog getDateConversionToCurrenciesDialog() {
+        return swingDateMoneyConversionFrame.getToCurrenciesDialog();
     }
 }
