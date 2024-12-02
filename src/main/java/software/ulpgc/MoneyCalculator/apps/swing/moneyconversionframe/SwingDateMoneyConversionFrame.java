@@ -33,7 +33,6 @@ public class SwingDateMoneyConversionFrame extends JFrame {
         initFrame();
         this.add(BorderLayout.NORTH, northPane(currencies));
         this.add(BorderLayout.CENTER, centerPane());
-        this.setVisible(true);
     }
 
     private Component centerPane() {
