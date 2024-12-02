@@ -28,8 +28,8 @@ public class SwingDateMoneyConversionFrame extends JFrame {
     private MoneyDialog moneyDialog;
     private MoneyDisplay moneyDisplay;
 
-    public SwingDateMoneyConversionFrame(List<Currency> currencies, Map<String, Command> commands) throws HeadlessException {
-        this.commands = commands;
+    public SwingDateMoneyConversionFrame(List<Currency> currencies) throws HeadlessException {
+        this.commands = new HashMap<>();
         initFrame();
         this.add(BorderLayout.NORTH, northPane(currencies));
         this.add(BorderLayout.CENTER, centerPane());
@@ -46,7 +46,9 @@ public class SwingDateMoneyConversionFrame extends JFrame {
 
     }
 
-
+    public Command put(String key, Command value) {
+        return commands.put(key, value);
+    }
 
     private void initFrame() {
         this.setTitle("Date conversion");
