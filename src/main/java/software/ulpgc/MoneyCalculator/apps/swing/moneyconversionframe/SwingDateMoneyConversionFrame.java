@@ -81,7 +81,7 @@ public class SwingDateMoneyConversionFrame extends JFrame {
         ExchangeRatesCurrencyAdapter adapter = new ExchangeRatesCurrencyAdapter();
         List<software.ulpgc.MoneyCalculator.architecture.model.Currency> currencies = adapter.adapt(deserializer.deserialize(reader.read()));
         HashMap<String, Command> map = new HashMap<>();
-        SwingDateMoneyConversionFrame frame = new SwingDateMoneyConversionFrame(currencies, map);
+        SwingDateMoneyConversionFrame frame = new SwingDateMoneyConversionFrame(currencies);
     }
 
     public CurrenciesDialog getFromCurrenciesDialog() {
