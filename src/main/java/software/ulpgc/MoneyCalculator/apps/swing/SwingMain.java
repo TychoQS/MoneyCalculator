@@ -23,8 +23,8 @@ public class SwingMain {
         List<Currency> currencies = getCurrencies();
         UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         SwingMainFrame mainFrame = new SwingMainFrame(currencies);
-        mainFrame.put("convert", getConvertCommand(mainFrame))
-                 .put("exchange", getExchangeCommand(mainFrame))
+        mainFrame.putOnMainFrameCommands("convert", getConvertCommand(mainFrame))
+                 .putOnMainFrameCommands("exchange", getExchangeCommand(mainFrame))
                  .setVisible(true);
         // TODO -> Implement time conversion
         // TODO -> Inspect what happens about the precissions of numbers
