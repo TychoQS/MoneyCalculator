@@ -14,22 +14,23 @@ import java.util.List;
 
 public class SwingMainFrame extends JFrame {
 
-    public static final int WIDTH = 1000;
-    public static final int HEIGHT = 800;
-    public static final String TITLE = "Money Calculator";
-    public static final String JMENU_ITEM_TEXT = "Date Money Conversion";
-    public static final String JMENU_TEXT = "Date Operations";
+    private static final int WIDTH = 1000;
+    private static final int HEIGHT = 800;
+    private static final String TITLE = "Money Calculator";
+    private static final String JMENU_ITEM_TEXT = "Date Money Conversion";
+    private static final String JMENU_TEXT = "Date Operations";
     private final List<Currency> currencies;
     private final HashMap<String, Command> commands;
     private SwingCurrenciesDialogsPane swingCurrenciesDialogsPane;
     private SwingConversionPane swingConversionPane;
     private JMenuBar jMenuBar;
-    private SwingDateMoneyConversionFrame swingDateMoneyConversionFrame;
+    private final SwingDateMoneyConversionFrame swingDateMoneyConversionFrame;
 
     public SwingMainFrame(List<Currency> currencies) throws HeadlessException {
         super();
         this.currencies = currencies;
         this.commands = new HashMap<>();
+        this.swingDateMoneyConversionFrame = new SwingDateMoneyConversionFrame(currencies, commands);
         initFrame();
         this.add(titlePane());
         this.add(centerPane());
@@ -86,7 +87,8 @@ public class SwingMainFrame extends JFrame {
         JMenuItem jMenuItem = new JMenuItem(JMENU_ITEM_TEXT);
         jMenuItem.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jMenuItem.addActionListener(e -> {
-            swingDateMoneyConversionFrame = new SwingDateMoneyConversionFrame(currencies, commands);
+            swingDateMoneyConversionFrame.setVisible(true);
+            swingDateMoneyConversionFrame.setLocationRelativeTo(SwingMainFrame.this);
         });
         return jMenuItem;
     }
