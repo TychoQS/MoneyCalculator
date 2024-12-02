@@ -30,7 +30,7 @@ public class SwingMainFrame extends JFrame {
         super();
         this.currencies = currencies;
         this.commands = new HashMap<>();
-        this.swingDateMoneyConversionFrame = new SwingDateMoneyConversionFrame(currencies, commands);
+        this.swingDateMoneyConversionFrame = new SwingDateMoneyConversionFrame(currencies);
         initFrame();
         this.add(titlePane());
         this.add(centerPane());
@@ -93,9 +93,13 @@ public class SwingMainFrame extends JFrame {
         return jMenuItem;
     }
 
-    public SwingMainFrame put(String key, Command value) {
+    public SwingMainFrame putOnMainFrameCommands(String key, Command value) {
         commands.put(key, value);
         return this;
+    }
+
+    public void putOnDateConversionFrameCommands(String key, Command value) {
+        swingDateMoneyConversionFrame.put(key, value);
     }
 
     public CurrenciesDialog getToCurrency() {
