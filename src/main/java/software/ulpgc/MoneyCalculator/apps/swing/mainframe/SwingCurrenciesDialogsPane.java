@@ -1,5 +1,6 @@
-package software.ulpgc.MoneyCalculator.apps.swing;
+package software.ulpgc.MoneyCalculator.apps.swing.mainframe;
 
+import software.ulpgc.MoneyCalculator.apps.swing.dialogs.SwingCurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.control.Command;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
@@ -12,7 +13,7 @@ import java.util.Map;
 
 public class SwingCurrenciesDialogsPane {
 
-    public static final ImageIcon BUTTON_ICON = new ImageIcon(SwingConversionPane.class.getResource("/exchange_arrows.png"));
+    public static final ImageIcon BUTTON_ICON = new ImageIcon(SwingCurrenciesDialogsPane.class.getResource("/exchange_arrows.png"));
     public static final String EXCHANGE_COMMAND = "exchange";
     private final JPanel currenciesDialogsPane;
     private final CurrenciesDialog fromCurrency;

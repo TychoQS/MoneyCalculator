@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.apps.swing;
+package software.ulpgc.MoneyCalculator.apps.swing.dialogs;
 
 import javax.swing.*;
 

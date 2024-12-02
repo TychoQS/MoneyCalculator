@@ -2,6 +2,7 @@ package software.ulpgc.MoneyCalculator.apps.swing;
 
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.*;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.*;
+import software.ulpgc.MoneyCalculator.apps.swing.mainframe.SwingMainFrame;
 import software.ulpgc.MoneyCalculator.architecture.control.Command;
 import software.ulpgc.MoneyCalculator.architecture.control.ConvertCommand;
 import software.ulpgc.MoneyCalculator.architecture.control.ExchangeCommand;

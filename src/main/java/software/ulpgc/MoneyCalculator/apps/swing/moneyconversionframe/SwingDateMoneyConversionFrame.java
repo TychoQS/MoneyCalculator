@@ -1,8 +1,9 @@
-package software.ulpgc.MoneyCalculator.apps.swing;
+package software.ulpgc.MoneyCalculator.apps.swing.moneyconversionframe;
 
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesCurrencyAdapter;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolDeserializer;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolReader;
+import software.ulpgc.MoneyCalculator.apps.swing.dialogs.SwingCurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 
