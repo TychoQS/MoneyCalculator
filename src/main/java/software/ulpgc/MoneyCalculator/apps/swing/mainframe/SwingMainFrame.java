@@ -1,6 +1,6 @@
 package software.ulpgc.MoneyCalculator.apps.swing.mainframe;
 
-import software.ulpgc.MoneyCalculator.apps.swing.moneyconversionframe.SwingDateMoneyConversionFrame;
+import software.ulpgc.MoneyCalculator.apps.swing.date.conversion.frame.SwingDateMoneyConversionFrame;
 import software.ulpgc.MoneyCalculator.architecture.control.Command;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
@@ -21,10 +21,10 @@ public class SwingMainFrame extends JFrame {
     private static final String JMENU_TEXT = "Date Operations";
     private final List<Currency> currencies;
     private final HashMap<String, Command> commands;
+    private final SwingDateMoneyConversionFrame swingDateMoneyConversionFrame;
     private SwingCurrenciesDialogsPane swingCurrenciesDialogsPane;
     private SwingConversionPane swingConversionPane;
     private JMenuBar jMenuBar;
-    private final SwingDateMoneyConversionFrame swingDateMoneyConversionFrame;
 
     public SwingMainFrame(List<Currency> currencies) throws HeadlessException {
         super();
