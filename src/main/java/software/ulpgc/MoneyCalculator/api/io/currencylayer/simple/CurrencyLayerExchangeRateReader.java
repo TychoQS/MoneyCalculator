@@ -1,8 +1,9 @@
-package software.ulpgc.MoneyCalculator.api.io.currencylayer;
+package software.ulpgc.MoneyCalculator.api.io.currencylayer.simple;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
-import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateReader;
+import software.ulpgc.MoneyCalculator.api.io.currencylayer.CurrencyLayerApi;
+import software.ulpgc.MoneyCalculator.architecture.io.readers.ExchangeRateReader;
 
 import java.io.IOException;
 

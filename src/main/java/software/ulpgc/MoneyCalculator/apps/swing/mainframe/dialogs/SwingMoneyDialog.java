@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.apps.swing.dialogs;
+package software.ulpgc.MoneyCalculator.apps.swing.mainframe.dialogs;
 
 import software.ulpgc.MoneyCalculator.architecture.model.Money;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
@@ -19,6 +19,10 @@ public class SwingMoneyDialog extends JTextField implements MoneyDialog {
         this.initPlaceholder();
     }
 
+    private static String getAmount(Money money) {
+        return String.valueOf(money.getAmount());
+    }
+
     @Override
     public Money getMoney() {
         return new Money(toDouble(this.getText()), currenciesDialog.getSelectedCurrency());
@@ -27,10 +31,6 @@ public class SwingMoneyDialog extends JTextField implements MoneyDialog {
     @Override
     public void setMoney(Money money) {
         this.setText(getAmount(money));
-    }
-
-    private static String getAmount(Money money) {
-        return String.valueOf(money.getAmount());
     }
 
     private double toDouble(String amount) {
