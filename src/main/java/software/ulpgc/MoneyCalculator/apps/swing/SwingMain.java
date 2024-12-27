@@ -1,6 +1,9 @@
 package software.ulpgc.MoneyCalculator.apps.swing;
 
-import software.ulpgc.MoneyCalculator.api.io.currencylayer.*;
+import software.ulpgc.MoneyCalculator.api.io.currencylayer.simple.CurrencyLayerExchangeRateAdapter;
+import software.ulpgc.MoneyCalculator.api.io.currencylayer.simple.CurrencyLayerExchangeRateDeserializer;
+import software.ulpgc.MoneyCalculator.api.io.currencylayer.simple.CurrencyLayerExchangeRateLoader;
+import software.ulpgc.MoneyCalculator.api.io.currencylayer.simple.CurrencyLayerExchangeRateReader;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.*;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.SwingMainFrame;
 import software.ulpgc.MoneyCalculator.architecture.control.Command;
@@ -8,7 +11,7 @@ import software.ulpgc.MoneyCalculator.architecture.control.ConvertCommand;
 import software.ulpgc.MoneyCalculator.architecture.control.ExchangeCommand;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.CurrencyAdapter;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateAdapter;
-import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateReader;
+import software.ulpgc.MoneyCalculator.architecture.io.readers.ExchangeRateReader;
 import software.ulpgc.MoneyCalculator.architecture.io.deserializers.ExchangeRateDeserializer;
 import software.ulpgc.MoneyCalculator.architecture.io.loaders.ExchangeRateLoader;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
@@ -28,7 +31,6 @@ public class SwingMain {
                  .setVisible(true);
         // TODO -> Implement time conversion
         // TODO -> Inspect what happens about the precissions of numbers
-        // TODO -> Think about to change the API where we get the currencies
     }
 
     private static List<Currency> getCurrencies() throws IOException {
