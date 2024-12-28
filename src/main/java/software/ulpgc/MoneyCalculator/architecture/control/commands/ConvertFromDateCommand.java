@@ -10,7 +10,7 @@ import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
 import java.io.IOException;
 
-public class DateConvertCommand implements Command { // TODO -> Implement after fetching date exchangerate implementation
+public class ConvertFromDateCommand implements Command {
 
     private final CurrenciesDialog toCurrencyDialog;
     private final DateDialog dateDialog;
@@ -18,7 +18,7 @@ public class DateConvertCommand implements Command { // TODO -> Implement after 
     private final MoneyDialog moneyDialog;
     private final DateExchangeRateLoader loader;
 
-    public DateConvertCommand(CurrenciesDialog toCurrencyDialog, DateDialog dateDialog, MoneyDisplay display, MoneyDialog moneyDialog, DateExchangeRateLoader loader) {
+    public ConvertFromDateCommand(CurrenciesDialog toCurrencyDialog, DateDialog dateDialog, MoneyDisplay display, MoneyDialog moneyDialog, DateExchangeRateLoader loader) {
         this.toCurrencyDialog = toCurrencyDialog;
         this.dateDialog = dateDialog;
         this.display = display;
@@ -28,7 +28,7 @@ public class DateConvertCommand implements Command { // TODO -> Implement after 
 
     @Override
     public void execute() throws IOException {
-        new DisplayConvertedMoneyCommand(this.display, getConvertedMoney()).execute();
+        if (!moneyDialog.isEmpty()) new DisplayConvertedMoneyCommand(this.display, getConvertedMoney()).execute();
     }
 
     private Money getConvertedMoney() throws IOException {
