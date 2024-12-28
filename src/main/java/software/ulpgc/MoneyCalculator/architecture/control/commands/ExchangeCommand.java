@@ -1,5 +1,6 @@
-package software.ulpgc.MoneyCalculator.architecture.control;
+package software.ulpgc.MoneyCalculator.architecture.control.commands;
 
+import software.ulpgc.MoneyCalculator.architecture.control.SwapMoneyDisplayAndDialogValidator;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
