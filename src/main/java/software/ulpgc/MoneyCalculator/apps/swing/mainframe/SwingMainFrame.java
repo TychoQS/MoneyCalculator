@@ -1,7 +1,7 @@
 package software.ulpgc.MoneyCalculator.apps.swing.mainframe;
 
 import software.ulpgc.MoneyCalculator.apps.swing.date.conversion.frame.SwingDateMoneyConversionFrame;
-import software.ulpgc.MoneyCalculator.architecture.control.Command;
+import software.ulpgc.MoneyCalculator.architecture.control.commands.Command;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
@@ -34,6 +34,10 @@ public class SwingMainFrame extends JFrame {
         initFrame();
         this.add(titlePane());
         this.add(centerPane());
+    }
+
+    public SwingDateMoneyConversionFrame getDateMoneyConversionFrame() {
+        return swingDateMoneyConversionFrame;
     }
 
     private void initFrame() {
@@ -98,8 +102,9 @@ public class SwingMainFrame extends JFrame {
         return this;
     }
 
-    public void putOnDateConversionFrameCommands(String key, Command value) {
+    public SwingMainFrame putOnDateConversionFrameCommands(String key, Command value) {
         swingDateMoneyConversionFrame.put(key, value);
+        return this;
     }
 
     public CurrenciesDialog getToCurrency() {
