@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.architecture.io.readers;
+package software.ulpgc.MoneyCalculator.api.io.currencylayer.date;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
