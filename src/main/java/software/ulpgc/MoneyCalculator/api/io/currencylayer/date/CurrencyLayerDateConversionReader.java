@@ -3,7 +3,6 @@ package software.ulpgc.MoneyCalculator.api.io.currencylayer.date;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.CurrencyLayerApi;
-import software.ulpgc.MoneyCalculator.architecture.io.readers.DateConversionReader;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;

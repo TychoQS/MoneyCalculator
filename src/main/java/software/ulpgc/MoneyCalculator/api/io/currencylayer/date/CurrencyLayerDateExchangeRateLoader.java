@@ -1,9 +1,7 @@
 package software.ulpgc.MoneyCalculator.api.io.currencylayer.date;
 
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateAdapter;
-import software.ulpgc.MoneyCalculator.architecture.io.deserializers.ExchangeRateDeserializer;
 import software.ulpgc.MoneyCalculator.architecture.io.loaders.DateExchangeRateLoader;
-import software.ulpgc.MoneyCalculator.architecture.io.readers.DateConversionReader;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.model.ExchangeRate;
 
@@ -13,10 +11,10 @@ import java.time.ZonedDateTime;
 public class CurrencyLayerDateExchangeRateLoader implements DateExchangeRateLoader {
 
     private final DateConversionReader reader;
-    private final ExchangeRateDeserializer deserializer;
+    private final DateConversionDeserializer deserializer;
     private final ExchangeRateAdapter adapter;
 
-    public CurrencyLayerDateExchangeRateLoader(DateConversionReader reader, ExchangeRateDeserializer deserializer, ExchangeRateAdapter adapter) {
+    public CurrencyLayerDateExchangeRateLoader(DateConversionReader reader, DateConversionDeserializer deserializer, ExchangeRateAdapter adapter) {
         this.reader = reader;
         this.deserializer = deserializer;
         this.adapter = adapter;
