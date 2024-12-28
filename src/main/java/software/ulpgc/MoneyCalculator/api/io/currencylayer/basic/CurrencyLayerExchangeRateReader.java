@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.api.io.currencylayer.simple;
+package software.ulpgc.MoneyCalculator.api.io.currencylayer.basic;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;

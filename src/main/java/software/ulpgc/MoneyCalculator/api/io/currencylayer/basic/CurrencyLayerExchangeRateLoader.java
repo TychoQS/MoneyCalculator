@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.api.io.currencylayer.simple;
+package software.ulpgc.MoneyCalculator.api.io.currencylayer.basic;
 
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateAdapter;
 import software.ulpgc.MoneyCalculator.architecture.io.deserializers.ExchangeRateDeserializer;

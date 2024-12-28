@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.api.io.currencylayer.simple;
+package software.ulpgc.MoneyCalculator.api.io.currencylayer.basic;
 
 import com.google.gson.Gson;
 import software.ulpgc.MoneyCalculator.api.io.pojos.CurrencyLayerExchangeRateGetResponse;
