@@ -1,7 +1,7 @@
 package software.ulpgc.MoneyCalculator.apps.swing;
 
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.date.CurrencyLayerDateExchangeRateAdapter;
-import software.ulpgc.MoneyCalculator.api.io.currencylayer.date.CurrencyLayerDateExchangeRateDeserializer;
+import software.ulpgc.MoneyCalculator.api.io.currencylayer.date.CurrencyLayerDateConversionDeserializer;
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.date.CurrencyLayerDateExchangeRateLoader;
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.date.CurrencyLayerDateConversionReader;
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerExchangeRateAdapter;
@@ -42,6 +42,7 @@ public class SwingMain {
         // TODO -> Review Exceptions
         // TODO -> Review Appearance
         // TODO -> Remove todos and mains
+        // TODO -> Comprobar suciedad
     }
 
     private static List<Currency> getCurrencies() throws IOException {
@@ -61,7 +62,7 @@ public class SwingMain {
 
     private static DateExchangeRateLoader getDateExchangeRateLoader() {
         CurrencyLayerDateConversionReader reader = new CurrencyLayerDateConversionReader();
-        CurrencyLayerDateExchangeRateDeserializer deserializer = new CurrencyLayerDateExchangeRateDeserializer();
+        CurrencyLayerDateConversionDeserializer deserializer = new CurrencyLayerDateConversionDeserializer();
         CurrencyLayerDateExchangeRateAdapter adapter = new CurrencyLayerDateExchangeRateAdapter();
         return new CurrencyLayerDateExchangeRateLoader(reader, deserializer, adapter);
     }
