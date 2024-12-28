@@ -36,8 +36,6 @@ public class SwingMain {
                  .putOnMainFrameCommands("exchange", getExchangeCommand(mainFrame))
                  .putOnDateConversionFrameCommands("convert", getDateConvertCommand(mainFrame.getDateMoneyConversionFrame()))
                  .setVisible(true);
-        // TODO -> Review time conversion API fetch implementation
-        // TODO -> Review convert command implementation
         // TODO -> Inspect what happens about the precissions of numbers
         // TODO -> Review Exceptions
         // TODO -> Review Appearance
