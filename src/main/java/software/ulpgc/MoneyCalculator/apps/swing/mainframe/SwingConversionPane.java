@@ -3,7 +3,7 @@ package software.ulpgc.MoneyCalculator.apps.swing.mainframe;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.dialogs.SwingErrorDialog;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.dialogs.SwingMoneyDialog;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.displays.SwingMoneyDisplay;
-import software.ulpgc.MoneyCalculator.architecture.control.Command;
+import software.ulpgc.MoneyCalculator.architecture.control.commands.Command;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;

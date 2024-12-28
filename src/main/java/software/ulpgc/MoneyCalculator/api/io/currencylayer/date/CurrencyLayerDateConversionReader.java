@@ -3,8 +3,7 @@ package software.ulpgc.MoneyCalculator.api.io.currencylayer.date;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.CurrencyLayerApi;
-import software.ulpgc.MoneyCalculator.architecture.io.readers.DateExchangeRateReader;
-import software.ulpgc.MoneyCalculator.architecture.io.readers.ExchangeRateReader;
+import software.ulpgc.MoneyCalculator.architecture.io.readers.DateConversionReader;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
@@ -12,17 +11,12 @@ import java.time.format.DateTimeFormatter;
 
 import static org.jsoup.Connection.Method.GET;
 
-public class CurrencyLayerDateExchangeRateReader implements DateExchangeRateReader {
-
-    public static void main(String[] args) throws IOException {
-        CurrencyLayerDateExchangeRateReader reader = new CurrencyLayerDateExchangeRateReader();
-        System.out.println(reader.read("EUR", "USD", ZonedDateTime.now()));
-    }
+public class CurrencyLayerDateConversionReader implements DateConversionReader {
 
     @Override
     public String read(String fromCurrencyCode, String toCurrencyCode, ZonedDateTime date) throws IOException {
-        System.out.println("ENDPOINT URL: " + CurrencyLayerApi.getDateExchangeRateEndpoint(fromCurrencyCode, toCurrencyCode, formatted(date)));
-        return read(CurrencyLayerApi.getDateExchangeRateEndpoint(fromCurrencyCode, toCurrencyCode, formatted(date)));
+        System.out.println("ENDPOINT URL: " + CurrencyLayerApi.getDateConversionEndpoint(fromCurrencyCode, toCurrencyCode, formatted(date))); // TODO -> Remove
+        return read(CurrencyLayerApi.getDateConversionEndpoint(fromCurrencyCode, toCurrencyCode, formatted(date)));
     }
 
     private String read(String dateExchangeRateEndpoint) throws IOException {

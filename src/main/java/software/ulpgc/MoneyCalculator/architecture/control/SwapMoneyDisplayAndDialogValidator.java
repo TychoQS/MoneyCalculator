@@ -3,7 +3,7 @@ package software.ulpgc.MoneyCalculator.architecture.control;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
-public class SwapMoneyDisplayAndDialogValidator { // TODO -> Try to rethink implementation
+public class SwapMoneyDisplayAndDialogValidator {
 
     public static boolean validate(MoneyDialog dialog, MoneyDisplay display) {
         try {

@@ -1,14 +1,10 @@
 package software.ulpgc.MoneyCalculator.apps.swing.date.conversion.frame;
 
-import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesCurrencyAdapter;
-import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolDeserializer;
-import software.ulpgc.MoneyCalculator.api.io.exchangerates.ExchangeRatesSymbolReader;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.displays.SwingMoneyDisplay;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.dialogs.SwingCurrenciesDialog;
-import software.ulpgc.MoneyCalculator.apps.swing.mainframe.dialogs.SwingErrorDialog;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.dialogs.SwingMoneyDialog;
 import software.ulpgc.MoneyCalculator.apps.swing.date.conversion.dialogs.SwingDateDialog;
-import software.ulpgc.MoneyCalculator.architecture.control.Command;
+import software.ulpgc.MoneyCalculator.architecture.control.commands.Command;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.DateDialog;
@@ -38,15 +34,6 @@ public class SwingDateMoneyConversionFrame extends JFrame {
         this.add(BorderLayout.CENTER, centerPane());
     }
 
-    public static void main(String[] args) throws IOException {
-        ExchangeRatesSymbolReader reader = new ExchangeRatesSymbolReader();
-        ExchangeRatesSymbolDeserializer deserializer = new ExchangeRatesSymbolDeserializer();
-        ExchangeRatesCurrencyAdapter adapter = new ExchangeRatesCurrencyAdapter();
-        List<software.ulpgc.MoneyCalculator.architecture.model.Currency> currencies = adapter.adapt(deserializer.deserialize(reader.read()));
-        HashMap<String, Command> map = new HashMap<>();
-        SwingDateMoneyConversionFrame frame = new SwingDateMoneyConversionFrame(currencies);
-    }
-
     private Component centerPane() {
         JPanel centerPane = new JPanel();
         moneyDialog = new SwingMoneyDialog(this.fromCurrenciesDialog);
@@ -62,8 +49,8 @@ public class SwingDateMoneyConversionFrame extends JFrame {
         return (Component) dateDialog;
     }
 
-    public Command put(String key, Command value) {
-        return commands.put(key, value);
+    public void put(String key, Command value) {
+        commands.put(key, value);
     }
 
     private void initFrame() {
@@ -87,15 +74,29 @@ public class SwingDateMoneyConversionFrame extends JFrame {
 
     private Component convertButton() {
         JButton button = new JButton("Convert");
-        button.addActionListener(e -> new SwingErrorDialog("MOCK", this.dateDialog.getDate().toString())); // TODO -> Implement feature
+        button.addActionListener(e -> {
+            try {
+                this.commands.get("convert").execute();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            } // TODO -> Remove exception. Must be managed in control class.
+        });
         return button;
-    }
-
-    public CurrenciesDialog getFromCurrenciesDialog() {
-        return fromCurrenciesDialog;
     }
 
     public CurrenciesDialog getToCurrenciesDialog() {
         return toCurrenciesDialog;
+    }
+
+    public DateDialog getDateDialog() {
+        return dateDialog;
+    }
+
+    public MoneyDisplay getMoneyDisplay() {
+        return moneyDisplay;
+    }
+
+    public MoneyDialog getMoneyDialog() {
+        return moneyDialog;
     }
 }

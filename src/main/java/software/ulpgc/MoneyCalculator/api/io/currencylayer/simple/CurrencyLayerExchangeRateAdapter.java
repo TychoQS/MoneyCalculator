@@ -1,7 +1,6 @@
 package software.ulpgc.MoneyCalculator.api.io.currencylayer.simple;
 
 import software.ulpgc.MoneyCalculator.api.io.pojos.CurrencyLayerExchangeRateGetResponse;
-import software.ulpgc.MoneyCalculator.api.io.pojos.CurrencyLayerGetResponseError;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateAdapter;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.model.ExchangeRate;
@@ -18,16 +17,12 @@ public class CurrencyLayerExchangeRateAdapter implements ExchangeRateAdapter {
             CurrencyLayerExchangeRateGetResponse response = (CurrencyLayerExchangeRateGetResponse) object;
             return adapt(response.timestamp(), response.quotes(), fromCurrency, toCurrency);
         } catch (ClassCastException ex) {
-            throw new IOException(buildErrorMessage((CurrencyLayerGetResponseError) object));
+            throw new IOException(ex.getMessage());
         }
     }
 
     private ExchangeRate adapt(long timestamp, Map<String, Double> quotes, Currency fromCurrency, Currency toCurrency) {
         return new ExchangeRate(getLocalDate(timestamp), getRate(quotes, fromCurrency, toCurrency), fromCurrency, toCurrency);
-    }
-
-    private String buildErrorMessage(CurrencyLayerGetResponseError responseError) {
-        return "CurrencyLayerAPIError:" + getCode(responseError) + " " + getMessage(responseError);
     }
 
     private LocalDate getLocalDate(long timestamp) {
@@ -40,14 +35,6 @@ public class CurrencyLayerExchangeRateAdapter implements ExchangeRateAdapter {
         } catch (NullPointerException ex) {
             return 1;
         }
-    }
-
-    private int getCode(CurrencyLayerGetResponseError responseError) {
-        return responseError.error().code();
-    }
-
-    private String getMessage(CurrencyLayerGetResponseError responseError) {
-        return responseError.error().info();
     }
 
     private long getDays(long timestamp) {
