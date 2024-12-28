@@ -36,11 +36,12 @@ public class SwingMain {
                  .putOnMainFrameCommands("exchange", getExchangeCommand(mainFrame))
                  .putOnDateConversionFrameCommands("convert", getDateConvertCommand(mainFrame.getDateMoneyConversionFrame()))
                  .setVisible(true);
+        // TODO -> Reimplement SwapConverter with method in interfaces instead.
         // TODO -> Inspect what happens about the precissions of numbers
         // TODO -> Review Exceptions
-        // TODO -> Review Appearance
+        // TODO -> Review Appearance (GUI)
         // TODO -> Remove todos and mains
-        // TODO -> Comprobar suciedad
+        // TODO -> Check "Suciedad"
     }
 
     private static List<Currency> getCurrencies() throws IOException {
