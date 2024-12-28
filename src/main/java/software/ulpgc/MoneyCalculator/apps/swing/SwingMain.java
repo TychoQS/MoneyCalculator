@@ -4,16 +4,16 @@ import software.ulpgc.MoneyCalculator.api.io.currencylayer.date.CurrencyLayerDat
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.date.CurrencyLayerDateExchangeRateDeserializer;
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.date.CurrencyLayerDateExchangeRateLoader;
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.date.CurrencyLayerDateConversionReader;
-import software.ulpgc.MoneyCalculator.api.io.currencylayer.simple.CurrencyLayerExchangeRateAdapter;
-import software.ulpgc.MoneyCalculator.api.io.currencylayer.simple.CurrencyLayerExchangeRateDeserializer;
-import software.ulpgc.MoneyCalculator.api.io.currencylayer.simple.CurrencyLayerExchangeRateLoader;
-import software.ulpgc.MoneyCalculator.api.io.currencylayer.simple.CurrencyLayerExchangeRateReader;
+import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerExchangeRateAdapter;
+import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerExchangeRateDeserializer;
+import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerExchangeRateLoader;
+import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerExchangeRateReader;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.*;
 import software.ulpgc.MoneyCalculator.apps.swing.date.conversion.frame.SwingDateMoneyConversionFrame;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.SwingMainFrame;
 import software.ulpgc.MoneyCalculator.architecture.control.commands.Command;
 import software.ulpgc.MoneyCalculator.architecture.control.commands.ConvertCommand;
-import software.ulpgc.MoneyCalculator.architecture.control.commands.DateConvertCommand;
+import software.ulpgc.MoneyCalculator.architecture.control.commands.ConvertFromDateCommand;
 import software.ulpgc.MoneyCalculator.architecture.control.commands.ExchangeCommand;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.CurrencyAdapter;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateAdapter;
@@ -37,8 +37,11 @@ public class SwingMain {
                  .putOnDateConversionFrameCommands("convert", getDateConvertCommand(mainFrame.getDateMoneyConversionFrame()))
                  .setVisible(true);
         // TODO -> Review time conversion API fetch implementation
+        // TODO -> Review convert command implementation
         // TODO -> Inspect what happens about the precissions of numbers
         // TODO -> Review Exceptions
+        // TODO -> Review Appearance
+        // TODO -> Remove todos and mains
     }
 
     private static List<Currency> getCurrencies() throws IOException {
@@ -49,11 +52,11 @@ public class SwingMain {
     }
 
     private static Command getConvertCommand(SwingMainFrame mainFrame) {
-        return new ConvertCommand(mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay(), getSimpleExchangeRateLoader());
+        return new ConvertCommand(mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay(), getBasicExchangeRateLoader());
     }
 
     private static Command getDateConvertCommand(SwingDateMoneyConversionFrame frame) {
-        return new DateConvertCommand(frame.getToCurrenciesDialog(), frame.getDateDialog(), frame.getMoneyDisplay(), frame.getMoneyDialog(), getDateExchangeRateLoader());
+        return new ConvertFromDateCommand(frame.getToCurrenciesDialog(), frame.getDateDialog(), frame.getMoneyDisplay(), frame.getMoneyDialog(), getDateExchangeRateLoader());
     }
 
     private static DateExchangeRateLoader getDateExchangeRateLoader() {
@@ -67,7 +70,7 @@ public class SwingMain {
         return new ExchangeCommand(mainFrame.getFromCurrency(), mainFrame.getToCurrency(), mainFrame.getMoneyDialog(), mainFrame.getMoneyDisplay());
     }
 
-    private static ExchangeRateLoader getSimpleExchangeRateLoader() {
+    private static ExchangeRateLoader getBasicExchangeRateLoader() {
         ExchangeRateReader reader = new CurrencyLayerExchangeRateReader();
         ExchangeRateDeserializer deserializer = new CurrencyLayerExchangeRateDeserializer();
         ExchangeRateAdapter adapter = new CurrencyLayerExchangeRateAdapter();
