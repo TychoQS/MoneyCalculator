@@ -1,7 +1,8 @@
     package software.ulpgc.MoneyCalculator.architecture.control.commands;
 
-    import software.ulpgc.MoneyCalculator.architecture.control.MoneyConverter;
     import software.ulpgc.MoneyCalculator.architecture.io.loaders.ExchangeRateLoader;
+    import software.ulpgc.MoneyCalculator.architecture.model.Currency;
+    import software.ulpgc.MoneyCalculator.architecture.model.ExchangeRate;
     import software.ulpgc.MoneyCalculator.architecture.model.Money;
     import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
     import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
@@ -29,6 +30,18 @@
         }
 
         private Money getConvertedMoney() throws IOException {
-            return MoneyConverter.convert(dialog.getMoney(), loader.load(this.dialog.getMoney().getCurrency(), toCurrencyDialog.getSelectedCurrency()));
+            return Money.getFrom(getMoneyAmount() * getExchangeRateLoader().getRate(), getToCurrency());
+        }
+
+        private Currency getToCurrency() {
+            return toCurrencyDialog.getSelectedCurrency();
+        }
+
+        private ExchangeRate getExchangeRateLoader() throws IOException {
+            return loader.load(this.dialog.getMoney().getCurrency(), getToCurrency());
+        }
+
+        private double getMoneyAmount() {
+            return dialog.getMoney().getAmount();
         }
     }

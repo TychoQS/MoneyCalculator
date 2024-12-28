@@ -1,7 +1,8 @@
 package software.ulpgc.MoneyCalculator.architecture.control.commands;
 
-import software.ulpgc.MoneyCalculator.architecture.control.MoneyConverter;
 import software.ulpgc.MoneyCalculator.architecture.io.loaders.DateExchangeRateLoader;
+import software.ulpgc.MoneyCalculator.architecture.model.Currency;
+import software.ulpgc.MoneyCalculator.architecture.model.ExchangeRate;
 import software.ulpgc.MoneyCalculator.architecture.model.Money;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.DateDialog;
@@ -9,6 +10,7 @@ import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
 
 public class ConvertFromDateCommand implements Command {
 
@@ -32,6 +34,26 @@ public class ConvertFromDateCommand implements Command {
     }
 
     private Money getConvertedMoney() throws IOException {
-        return MoneyConverter.convert(moneyDialog.getMoney(), loader.load(this.moneyDialog.getMoney().getCurrency(), toCurrencyDialog.getSelectedCurrency(), dateDialog.getDate()));
+        return Money.getFrom(getMoneyAmount() * getExchangeRateLoader().getRate(), getToCurrency());
+    }
+
+    private double getMoneyAmount() {
+        return moneyDialog.getMoney().getAmount();
+    }
+
+    private ExchangeRate getExchangeRateLoader() throws IOException {
+        return loader.load(getFromCurrency(), getToCurrency(), getDate());
+    }
+
+    private ZonedDateTime getDate() {
+        return dateDialog.getDate();
+    }
+
+    private Currency getToCurrency() {
+        return toCurrencyDialog.getSelectedCurrency();
+    }
+
+    private Currency getFromCurrency() {
+        return this.moneyDialog.getMoney().getCurrency();
     }
 }

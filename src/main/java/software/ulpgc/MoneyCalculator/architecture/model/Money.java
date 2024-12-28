@@ -9,6 +9,10 @@ public class Money {
         this.currency = currency;
     }
 
+    public static Money getFrom(double amount, Currency currency) {
+        return new Money(amount, currency);
+    }
+
     public double getAmount() {
         return amount;
     }
