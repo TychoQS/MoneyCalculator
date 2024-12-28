@@ -33,6 +33,11 @@ public class SwingMoneyDialog extends JTextField implements MoneyDialog {
         this.setText(getAmount(money));
     }
 
+    @Override
+    public boolean isEmpty() {
+        return this.getText().equals(PLACEHOLDER);
+    }
+
     private double toDouble(String amount) {
         return Double.parseDouble(amount);
     }
