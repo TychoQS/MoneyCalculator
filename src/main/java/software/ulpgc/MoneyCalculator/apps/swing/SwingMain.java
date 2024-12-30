@@ -11,10 +11,7 @@ import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerEx
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.*;
 import software.ulpgc.MoneyCalculator.apps.swing.date.conversion.frame.SwingDateMoneyConversionFrame;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.SwingMainFrame;
-import software.ulpgc.MoneyCalculator.architecture.control.commands.Command;
-import software.ulpgc.MoneyCalculator.architecture.control.commands.ConvertCommand;
-import software.ulpgc.MoneyCalculator.architecture.control.commands.ConvertFromDateCommand;
-import software.ulpgc.MoneyCalculator.architecture.control.commands.ExchangeCommand;
+import software.ulpgc.MoneyCalculator.architecture.control.commands.*;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.CurrencyAdapter;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateAdapter;
 import software.ulpgc.MoneyCalculator.architecture.io.loaders.DateExchangeRateLoader;
@@ -31,17 +28,21 @@ public class SwingMain {
     public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
         List<Currency> currencies = getCurrencies();
         UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        DisplayExceptionCommand.initializeDialog(getSwingExceptionDialog());
         SwingMainFrame mainFrame = new SwingMainFrame(currencies);
         mainFrame.putOnMainFrameCommands("convert", getConvertCommand(mainFrame))
                  .putOnMainFrameCommands("exchange", getExchangeCommand(mainFrame))
                  .putOnDateConversionFrameCommands("convert", getDateConvertCommand(mainFrame.getDateMoneyConversionFrame()))
                  .setVisible(true);
-        // TODO -> Reimplement SwapConverter with method in interfaces instead.
         // TODO -> Inspect what happens about the precissions of numbers
-        // TODO -> Review Exceptions
         // TODO -> Review Appearance (GUI)
         // TODO -> Remove todos and mains
         // TODO -> Check "Suciedad"
+        // TODO -> Check warnings
+    }
+
+    private static SwingExceptionDialog getSwingExceptionDialog() {
+        return new SwingExceptionDialog();
     }
 
     private static List<Currency> getCurrencies() throws IOException {
