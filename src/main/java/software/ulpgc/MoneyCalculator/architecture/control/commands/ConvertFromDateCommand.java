@@ -40,7 +40,15 @@ public class ConvertFromDateCommand implements Command {
     }
 
     private Money getConvertedMoney() throws IOException {
-        return Money.getFrom(getMoneyAmount() * getExchangeRateLoader().getRate(), getToCurrency());
+        return Money.getFrom(getAmount(), getToCurrency());
+    }
+
+    private double getAmount() throws IOException {
+        return getMoneyAmount() * getRate();
+    }
+
+    private double getRate() throws IOException {
+        return getExchangeRateLoader().getRate();
     }
 
     private double getMoneyAmount() {
