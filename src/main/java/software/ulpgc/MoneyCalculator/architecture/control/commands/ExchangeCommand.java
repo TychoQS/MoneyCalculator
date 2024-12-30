@@ -4,7 +4,6 @@ import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
-import java.io.IOException;
 
 public class ExchangeCommand implements Command {
 
@@ -21,7 +20,7 @@ public class ExchangeCommand implements Command {
     }
 
     @Override
-    public void execute() throws IOException {
+    public void execute() {
         if (AreDialogAndDisplayAvailableForSwapping()) new SwapMoneyDisplayAndDialogCommand(display, dialog).execute();
         new SwapCurrenciesDialogCommand(fromCurrencyDialog, toCurrencyDialog).execute();
     }

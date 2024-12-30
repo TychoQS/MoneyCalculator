@@ -3,7 +3,6 @@ package software.ulpgc.MoneyCalculator.architecture.control.commands;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 
-import java.io.IOException;
 
 public class SwapCurrenciesDialogCommand implements Command {
     private final CurrenciesDialog fromCurrencyDialog;
@@ -19,7 +18,7 @@ public class SwapCurrenciesDialogCommand implements Command {
     }
 
     @Override
-    public void execute() throws IOException {
+    public void execute() {
         this.fromCurrencyDialog.setCurrency(toCurrency);
         this.toCurrencyDialog.setCurrency(fromCurrency);
     }

@@ -4,7 +4,6 @@ import software.ulpgc.MoneyCalculator.architecture.model.Money;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
-import java.io.IOException;
 
 public class SwapMoneyDisplayAndDialogCommand implements Command {
     private final MoneyDisplay display;
@@ -20,7 +19,7 @@ public class SwapMoneyDisplayAndDialogCommand implements Command {
     }
 
     @Override
-    public void execute() throws IOException {
+    public void execute() {
         this.dialog.setMoney(displayMoney);
         this.display.display(dialogMoney);
     }
