@@ -20,7 +20,7 @@ public class SwapMoneyDisplayAndDialogCommand implements Command {
 
     @Override
     public void execute() {
-        this.dialog.setMoney(displayMoney);
-        this.display.display(dialogMoney);
+        this.dialog.setMoney(Money.getFrom(displayMoney.getAmount(), displayMoney.getCurrency()));
+        this.display.display(Money.getFrom(dialogMoney.getAmount(), dialogMoney.getCurrency()));
     }
 }

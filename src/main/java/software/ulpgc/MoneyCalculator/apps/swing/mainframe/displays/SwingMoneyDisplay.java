@@ -6,6 +6,7 @@ import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 import javax.swing.*;
 import java.awt.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class SwingMoneyDisplay extends JLabel implements MoneyDisplay {
 
@@ -18,7 +19,7 @@ public class SwingMoneyDisplay extends JLabel implements MoneyDisplay {
 
     private static double getRoundedAmount(Money money) {
         BigDecimal amount = BigDecimal.valueOf(money.getAmount());
-        BigDecimal roundedAmount = amount.setScale(2, BigDecimal.ROUND_DOWN);
+        BigDecimal roundedAmount = amount.setScale(2, RoundingMode.DOWN);
         return roundedAmount.doubleValue();
     }
 
