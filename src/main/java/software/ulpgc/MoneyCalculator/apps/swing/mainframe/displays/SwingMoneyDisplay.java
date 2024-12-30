@@ -29,4 +29,9 @@ public class SwingMoneyDisplay extends JLabel implements MoneyDisplay {
     public Money getMoney() {
         return (Money) this.getClientProperty("money");
     }
+
+    @Override
+    public boolean isEmpty() {
+        return this.getText().isEmpty();
+    }
 }

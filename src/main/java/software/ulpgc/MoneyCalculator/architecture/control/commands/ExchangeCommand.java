@@ -1,6 +1,5 @@
 package software.ulpgc.MoneyCalculator.architecture.control.commands;
 
-import software.ulpgc.MoneyCalculator.architecture.control.SwapMoneyDisplayAndDialogValidator;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
@@ -23,7 +22,11 @@ public class ExchangeCommand implements Command {
 
     @Override
     public void execute() throws IOException {
-        if (SwapMoneyDisplayAndDialogValidator.validate(dialog, display)) new SwapMoneyDisplayAndDialogCommand(display, dialog).execute();
+        if (AreDialogAndDisplayAvailableForSwapping()) new SwapMoneyDisplayAndDialogCommand(display, dialog).execute();
         new SwapCurrenciesDialogCommand(fromCurrencyDialog, toCurrencyDialog).execute();
+    }
+
+    private boolean AreDialogAndDisplayAvailableForSwapping() {
+        return !this.dialog.isEmpty() && !this.display.isEmpty();
     }
 }
