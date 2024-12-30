@@ -1,7 +1,7 @@
 package software.ulpgc.MoneyCalculator.api.io.currencylayer;
 
 public class CurrencyLayerApi {
-    public static final String API_KEY = "f508c1f6d1c6705e296fec36513ba0ab";
+    public static final String API_KEY = "d103d311647949d609482f4c93f62012";
     private static final String EXCHANGE_RATE_ENDPOINT = "https://api.currencylayer.com/live?access_key=%s&source=%s&currencies=%s";
     private static final String DATE_CONVERSION_ENDPOINT = "https://api.currencylayer.com/convert?access_key=%s&from=%s&to=%s&amount=1&date=%s";
 
