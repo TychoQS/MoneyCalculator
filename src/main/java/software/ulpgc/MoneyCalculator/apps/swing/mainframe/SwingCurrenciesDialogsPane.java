@@ -42,13 +42,7 @@ public class SwingCurrenciesDialogsPane {
     private Component exchangeButton() {
         JButton button = new JButton();
         button.setIcon(BUTTON_ICON);
-        button.addActionListener(e -> {
-            try {
-                commands.get(EXCHANGE_COMMAND).execute();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
+        button.addActionListener(e -> commands.get(EXCHANGE_COMMAND).execute());
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         return button;
     }

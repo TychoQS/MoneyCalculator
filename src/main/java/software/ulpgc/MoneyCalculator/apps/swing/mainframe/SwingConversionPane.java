@@ -37,12 +37,7 @@ public class SwingConversionPane {
 
     private Component convertButton() {
         JButton button = new JButton("Convert");
-        button.addActionListener(e -> {
-            try {
-                commands.get("convert").execute();
-            } catch (IOException ex) {
-                new SwingErrorDialog("Alert", ex.getMessage());}
-        });
+        button.addActionListener(e -> commands.get("convert").execute());
         return button;
     }
 

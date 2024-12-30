@@ -74,13 +74,7 @@ public class SwingDateMoneyConversionFrame extends JFrame {
 
     private Component convertButton() {
         JButton button = new JButton("Convert");
-        button.addActionListener(e -> {
-            try {
-                this.commands.get("convert").execute();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            } // TODO -> Remove exception. Must be managed in control class.
-        });
+        button.addActionListener(e -> this.commands.get("convert").execute());
         return button;
     }
 
