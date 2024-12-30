@@ -28,16 +28,24 @@
         @Override
         public void execute() {
             try {
-                if (!dialog.isEmpty()) new DisplayConvertedMoneyCommand(display, getConvertedMoney()).execute();;
+                if (!dialog.isEmpty()) new DisplayConvertedMoneyCommand(display, getConvertedMoney()).execute();
             } catch (IOException ex) {
                 DisplayExceptionCommand.with(ex.getMessage(), API_ERROR_TITLE).execute();
             } catch (NullPointerException ex) {
-                return;
+                new DisplayConvertedMoneyCommand(display, this.dialog.getMoney()).execute();
             }
         }
 
         private Money getConvertedMoney() throws IOException {
-            return Money.getFrom(getMoneyAmount() * getExchangeRateLoader().getRate(), getToCurrency());
+            return Money.getFrom(getAmount(), getToCurrency());
+        }
+
+        private double getAmount() throws IOException {
+            return getMoneyAmount() * getRate();
+        }
+
+        private double getRate() throws IOException {
+            return getExchangeRateLoader().getRate();
         }
 
         private Currency getToCurrency() {
@@ -49,6 +57,7 @@
         }
 
         private double getMoneyAmount() {
+
             return dialog.getMoney().getAmount();
         }
     }
