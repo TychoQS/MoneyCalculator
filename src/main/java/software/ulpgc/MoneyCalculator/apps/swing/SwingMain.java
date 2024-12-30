@@ -9,7 +9,7 @@ import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerEx
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerExchangeRateLoader;
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerExchangeRateReader;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.*;
-import software.ulpgc.MoneyCalculator.apps.swing.date.conversion.frame.SwingDateMoneyConversionFrame;
+import software.ulpgc.MoneyCalculator.apps.swing.date.conversion.SwingDateMoneyConversionFrame;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.SwingMainFrame;
 import software.ulpgc.MoneyCalculator.architecture.control.commands.*;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.CurrencyAdapter;

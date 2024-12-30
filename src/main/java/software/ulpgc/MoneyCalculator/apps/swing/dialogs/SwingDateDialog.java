@@ -1,4 +1,4 @@
-package software.ulpgc.MoneyCalculator.apps.swing.date.conversion.dialogs;
+package software.ulpgc.MoneyCalculator.apps.swing.dialogs;
 
 import software.ulpgc.MoneyCalculator.architecture.view.DateDialog;
 

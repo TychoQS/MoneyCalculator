@@ -1,9 +1,9 @@
-package software.ulpgc.MoneyCalculator.apps.swing.date.conversion.frame;
+package software.ulpgc.MoneyCalculator.apps.swing.date.conversion;
 
-import software.ulpgc.MoneyCalculator.apps.swing.mainframe.displays.SwingMoneyDisplay;
-import software.ulpgc.MoneyCalculator.apps.swing.mainframe.dialogs.SwingCurrenciesDialog;
-import software.ulpgc.MoneyCalculator.apps.swing.mainframe.dialogs.SwingMoneyDialog;
-import software.ulpgc.MoneyCalculator.apps.swing.date.conversion.dialogs.SwingDateDialog;
+import software.ulpgc.MoneyCalculator.apps.swing.displays.SwingMoneyDisplay;
+import software.ulpgc.MoneyCalculator.apps.swing.dialogs.SwingCurrenciesDialog;
+import software.ulpgc.MoneyCalculator.apps.swing.dialogs.SwingMoneyDialog;
+import software.ulpgc.MoneyCalculator.apps.swing.dialogs.SwingDateDialog;
 import software.ulpgc.MoneyCalculator.architecture.control.commands.Command;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
@@ -13,7 +13,6 @@ import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -1,13 +1,12 @@
 package software.ulpgc.MoneyCalculator.apps.swing.mainframe;
 
-import software.ulpgc.MoneyCalculator.apps.swing.mainframe.dialogs.SwingCurrenciesDialog;
+import software.ulpgc.MoneyCalculator.apps.swing.dialogs.SwingCurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.control.commands.Command;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
