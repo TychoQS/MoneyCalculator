@@ -12,6 +12,7 @@
 
     public class ConvertCommand implements Command {
 
+        public static final String API_ERROR_TITLE = "API ERROR";
         private final CurrenciesDialog toCurrencyDialog;
         private final MoneyDialog dialog;
         private final MoneyDisplay display;
@@ -25,8 +26,14 @@
         }
 
         @Override
-        public void execute() throws IOException {
-            if (!dialog.isEmpty()) new DisplayConvertedMoneyCommand(display, getConvertedMoney()).execute();;
+        public void execute() {
+            try {
+                if (!dialog.isEmpty()) new DisplayConvertedMoneyCommand(display, getConvertedMoney()).execute();;
+            } catch (IOException ex) {
+                DisplayExceptionCommand.with(ex.getMessage(), API_ERROR_TITLE).execute();
+            } catch (NullPointerException ex) {
+                return;
+            }
         }
 
         private Money getConvertedMoney() throws IOException {

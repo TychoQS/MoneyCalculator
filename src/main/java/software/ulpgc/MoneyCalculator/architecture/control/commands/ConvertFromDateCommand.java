@@ -12,6 +12,8 @@ import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 
+import static software.ulpgc.MoneyCalculator.architecture.control.commands.ConvertCommand.API_ERROR_TITLE;
+
 public class ConvertFromDateCommand implements Command {
 
     private final CurrenciesDialog toCurrencyDialog;
@@ -29,8 +31,12 @@ public class ConvertFromDateCommand implements Command {
     }
 
     @Override
-    public void execute() throws IOException {
-        if (!moneyDialog.isEmpty()) new DisplayConvertedMoneyCommand(this.display, getConvertedMoney()).execute();
+    public void execute() {
+        try {
+            if (!moneyDialog.isEmpty()) new DisplayConvertedMoneyCommand(this.display, getConvertedMoney()).execute();
+        } catch (IOException ex) {
+            DisplayExceptionCommand.with(ex.getMessage(), API_ERROR_TITLE).execute();
+        }
     }
 
     private Money getConvertedMoney() throws IOException {
