@@ -1,6 +1,7 @@
 package software.ulpgc.MoneyCalculator.api.io.currencylayer.date;
 
 import software.ulpgc.MoneyCalculator.api.io.pojos.CurrencyLayerDateConversionGetResponse;
+import software.ulpgc.MoneyCalculator.api.io.pojos.CurrencyLayerGetResponseError;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateAdapter;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.model.ExchangeRate;
@@ -15,7 +16,8 @@ public class CurrencyLayerDateExchangeRateAdapter implements ExchangeRateAdapter
             CurrencyLayerDateConversionGetResponse response = (CurrencyLayerDateConversionGetResponse) object;
             return adapt(response.info().timestamp(), response.result(), fromCurrency, toCurrency);
         } catch (ClassCastException ex) {
-            throw new IOException(ex.getMessage());
+            CurrencyLayerGetResponseError responseError = (CurrencyLayerGetResponseError) object;
+            throw new IOException(responseError.error().info());
         }
     }
 

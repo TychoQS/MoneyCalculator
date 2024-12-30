@@ -1,6 +1,7 @@
 package software.ulpgc.MoneyCalculator.api.io.currencylayer.basic;
 
 import software.ulpgc.MoneyCalculator.api.io.pojos.CurrencyLayerExchangeRateGetResponse;
+import software.ulpgc.MoneyCalculator.api.io.pojos.CurrencyLayerGetResponseError;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.ExchangeRateAdapter;
 import software.ulpgc.MoneyCalculator.architecture.model.Currency;
 import software.ulpgc.MoneyCalculator.architecture.model.ExchangeRate;
@@ -11,17 +12,21 @@ import java.util.Map;
 
 public class CurrencyLayerExchangeRateAdapter implements ExchangeRateAdapter {
 
+    public static final String APIKEY_EXPIRED_MESSAGE = "Unable to access the API as the API key usage limit has been reached.";
+
     @Override
     public ExchangeRate adapt(Object object, Currency fromCurrency, Currency toCurrency) throws IOException {
         try {
             CurrencyLayerExchangeRateGetResponse response = (CurrencyLayerExchangeRateGetResponse) object;
+            System.out.println("Object: " + response);
             return adapt(response.timestamp(), response.quotes(), fromCurrency, toCurrency);
         } catch (ClassCastException ex) {
-            throw new IOException(ex.getMessage());
+            CurrencyLayerGetResponseError responseError = (CurrencyLayerGetResponseError) object;
+            throw new IOException(responseError.error().info());
         }
     }
 
-    private ExchangeRate adapt(long timestamp, Map<String, Double> quotes, Currency fromCurrency, Currency toCurrency) {
+    private ExchangeRate adapt(long timestamp, Map<String, Double> quotes, Currency fromCurrency, Currency toCurrency){
         return new ExchangeRate(getLocalDate(timestamp), getRate(quotes, fromCurrency, toCurrency), fromCurrency, toCurrency);
     }
 
@@ -29,12 +34,8 @@ public class CurrencyLayerExchangeRateAdapter implements ExchangeRateAdapter {
         return LocalDate.EPOCH.plusDays(getDays(timestamp));
     }
 
-    private double getRate(Map<String, Double> quotes, Currency fromCurrency, Currency toCurrency) {
-        try {
-            return quotes.get(buildKey(fromCurrency, toCurrency));
-        } catch (NullPointerException ex) {
-            return 1;
-        }
+    private double getRate(Map<String, Double> quotes, Currency fromCurrency, Currency toCurrency){
+        return quotes.get(buildKey(fromCurrency, toCurrency));
     }
 
     private long getDays(long timestamp) {
