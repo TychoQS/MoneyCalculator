@@ -5,6 +5,7 @@ import software.ulpgc.MoneyCalculator.architecture.view.MoneyDisplay;
 
 import javax.swing.*;
 import java.awt.*;
+import java.math.BigDecimal;
 
 public class SwingMoneyDisplay extends JLabel implements MoneyDisplay {
 
@@ -15,13 +16,19 @@ public class SwingMoneyDisplay extends JLabel implements MoneyDisplay {
         this.setFont(this.setFont());
     }
 
+    private static double getRoundedAmount(Money money) {
+        BigDecimal amount = BigDecimal.valueOf(money.getAmount());
+        BigDecimal roundedAmount = amount.setScale(2, BigDecimal.ROUND_DOWN);
+        return roundedAmount.doubleValue();
+    }
+
     private Font setFont() {
         return new Font("Arial", Font.PLAIN, FONT_SIZE);
     }
 
     @Override
     public void display(Money money) {
-        this.setText(money.getAmount() + " " + money.getCurrency().getCode());
+        this.setText(getRoundedAmount(money) + " " + money.getCurrency().getCode());
         this.putClientProperty("money", money);
     }
 
