@@ -10,11 +10,16 @@ import java.math.RoundingMode;
 
 public class SwingMoneyDisplay extends JLabel implements MoneyDisplay {
 
-    public static final int FONT_SIZE = 15;
+    private static final int FONT_SIZE = 15;
+    private static final String MONEY_PROPERTY = "money";
+    private static final String FONT_NAME = "FB Agent";
+    private static final Font FONT = new Font(FONT_NAME, Font.PLAIN, FONT_SIZE);
+
 
     public SwingMoneyDisplay() {
         super();
-        this.setFont(this.setFont());
+        this.setFont(FONT);
+        this.setAlignmentX(CENTER_ALIGNMENT);
     }
 
     private static double getRoundedAmount(Money money) {
@@ -23,19 +28,15 @@ public class SwingMoneyDisplay extends JLabel implements MoneyDisplay {
         return roundedAmount.doubleValue();
     }
 
-    private Font setFont() {
-        return new Font("Arial", Font.PLAIN, FONT_SIZE);
-    }
-
     @Override
     public void display(Money money) {
         this.setText(getRoundedAmount(money) + " " + money.getCurrency().getCode());
-        this.putClientProperty("money", money);
+        this.putClientProperty(MONEY_PROPERTY, money);
     }
 
     @Override
     public Money getMoney() {
-        return (Money) this.getClientProperty("money");
+        return (Money) this.getClientProperty(MONEY_PROPERTY);
     }
 
     @Override

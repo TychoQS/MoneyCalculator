@@ -10,6 +10,7 @@ import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerEx
 import software.ulpgc.MoneyCalculator.api.io.currencylayer.basic.CurrencyLayerExchangeRateReader;
 import software.ulpgc.MoneyCalculator.api.io.exchangerates.*;
 import software.ulpgc.MoneyCalculator.apps.swing.date.conversion.SwingDateMoneyConversionFrame;
+import software.ulpgc.MoneyCalculator.apps.swing.dialogs.SwingExceptionDialog;
 import software.ulpgc.MoneyCalculator.apps.swing.mainframe.SwingMainFrame;
 import software.ulpgc.MoneyCalculator.architecture.control.commands.*;
 import software.ulpgc.MoneyCalculator.architecture.io.adapters.CurrencyAdapter;
@@ -25,17 +26,20 @@ import java.io.IOException;
 import java.util.List;
 
 public class SwingMain {
+
+    public static final String LOOK_AND_FEEL = "javax.swing.plaf.nimbus.NimbusLookAndFeel";
+    public static final String CONVERT_COMMAND = "convert";
+    public static final String EXCHANGE_COMMAND = "exchange";
+
     public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
         List<Currency> currencies = getCurrencies();
-        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        UIManager.setLookAndFeel(LOOK_AND_FEEL);
         DisplayExceptionCommand.initializeDialog(getSwingExceptionDialog());
         SwingMainFrame mainFrame = new SwingMainFrame(currencies);
-        mainFrame.putOnMainFrameCommands("convert", getConvertCommand(mainFrame))
-                 .putOnMainFrameCommands("exchange", getExchangeCommand(mainFrame))
-                 .putOnDateConversionFrameCommands("convert", getDateConvertCommand(mainFrame.getDateMoneyConversionFrame()))
+        mainFrame.putOnMainFrameCommands(CONVERT_COMMAND, getConvertCommand(mainFrame))
+                 .putOnMainFrameCommands(EXCHANGE_COMMAND, getExchangeCommand(mainFrame))
+                 .putOnDateConversionFrameCommands(CONVERT_COMMAND, getDateConvertCommand(mainFrame.getDateMoneyConversionFrame()))
                  .setVisible(true);
-        // TODO -> Inspect what happens about the precissions of numbers
-        // TODO -> Review Appearance (GUI)
         // TODO -> Remove todos and mains
         // TODO -> Check "Suciedad"
         // TODO -> Check warnings

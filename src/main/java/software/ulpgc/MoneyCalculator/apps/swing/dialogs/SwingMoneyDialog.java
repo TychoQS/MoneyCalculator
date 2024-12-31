@@ -5,18 +5,32 @@ import software.ulpgc.MoneyCalculator.architecture.view.CurrenciesDialog;
 import software.ulpgc.MoneyCalculator.architecture.view.MoneyDialog;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class SwingMoneyDialog extends JTextField implements MoneyDialog {
 
+    public static final int HEIGHT = 30;
+    public static final int WIDTH = 100;
+    public static final int COLUMNS = 15;
+    public static final Color BACKGROUND_COLOR = Color.RED;
+    public static final Color BORDER_COLOR = Color.BLACK;
+    private static final int FONT_SIZE = 15;
+    private static final String FONT_NAME = "FB Agent";
+    private static final Font FONT = new Font(FONT_NAME, Font.PLAIN, FONT_SIZE);
     private final CurrenciesDialog currenciesDialog;
     private final String PLACEHOLDER  = "Type your amount here...";
     
     public SwingMoneyDialog(CurrenciesDialog currenciesDialog) {
-        super(15);
+        super(COLUMNS);
         this.currenciesDialog = currenciesDialog;
         this.initPlaceholder();
+        this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        this.setFont(FONT);
+        this.setBackground(BACKGROUND_COLOR);
+        this.setBorder(new LineBorder(BORDER_COLOR, 2));
     }
 
     private static String getAmount(Money money) {
