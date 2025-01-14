@@ -19,8 +19,8 @@ public class SwingConversionPane {
     public static final Font FONT = new Font("FB Agent", Font.PLAIN, 15);
     public static final int ROWS = 1;
     public static final int COLUMNS = 3;
-    public static final int HGAP = 10;
-    public static final int VGAP = 10;
+    public static final int HORIZONTAL_GAP = 10;
+    public static final int VERTICAL_GAP = 10;
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 30;
     public static final Color BACKGROUND_COLOR = Color.RED;
@@ -40,7 +40,7 @@ public class SwingConversionPane {
     }
 
     private void initPane() {
-        conversionPane.setLayout(new GridLayout(ROWS, COLUMNS, HGAP, VGAP));
+        conversionPane.setLayout(new GridLayout(ROWS, COLUMNS, HORIZONTAL_GAP, VERTICAL_GAP));
         conversionPane.setBackground(BACKGROUND_COLOR);
         addPanels();
     }
