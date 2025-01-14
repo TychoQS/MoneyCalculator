@@ -52,7 +52,7 @@ public class ConvertFromDateCommand implements Command {
     }
 
     private double getMoneyAmount() {
-        return moneyDialog.getMoney().getAmount();
+        return moneyDialog.getMoney().amount();
     }
 
     private ExchangeRate getExchangeRateLoader() throws IOException {
@@ -68,6 +68,6 @@ public class ConvertFromDateCommand implements Command {
     }
 
     private Currency getFromCurrency() {
-        return this.moneyDialog.getMoney().getCurrency();
+        return this.moneyDialog.getMoney().currency();
     }
 }
