@@ -16,8 +16,9 @@ public class CurrencyLayerDateExchangeRateAdapter implements ExchangeRateAdapter
             CurrencyLayerDateConversionGetResponse response = (CurrencyLayerDateConversionGetResponse) object;
             return adapt(response.info().timestamp(), response.result(), fromCurrency, toCurrency);
         } catch (ClassCastException ex) {
-            CurrencyLayerGetResponseError responseError = (CurrencyLayerGetResponseError) object;
-            throw new IOException(responseError.error().info());
+            throw (object instanceof CurrencyLayerGetResponseError responseError)
+                    ? new IOException(responseError.error().info())
+                    : new IOException(ex.getMessage());
         }
     }
 
