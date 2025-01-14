@@ -21,7 +21,6 @@ public class CurrencyLayerExchangeRateDeserializer implements ExchangeRateDeseri
 
     @Override
     public Object deserialize(String read) {
-        System.out.println("Respuesta: " + new Gson().fromJson(read, CurrencyLayerExchangeRateGetResponse.class));
         return isSuccessful(read) ? getExchangeRateGetResponse(read) : getExchangeRateError(read);
     }
 }
