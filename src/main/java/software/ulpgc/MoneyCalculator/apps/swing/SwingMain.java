@@ -40,10 +40,6 @@ public class SwingMain {
                  .putOnMainFrameCommands(EXCHANGE_COMMAND, getExchangeCommand(mainFrame))
                  .putOnDateConversionFrameCommands(CONVERT_COMMAND, getDateConvertCommand(mainFrame.getDateMoneyConversionFrame()))
                  .setVisible(true);
-        // TODO -> Remove todos and mains
-        // TODO -> Check classes
-        // TODO -> Check "Suciedad"
-        // TODO -> Check warnings
     }
 
     private static SwingExceptionDialog getSwingExceptionDialog() {
