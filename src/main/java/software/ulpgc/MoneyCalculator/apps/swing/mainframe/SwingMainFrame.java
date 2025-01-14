@@ -14,10 +14,12 @@
     import java.io.InputStream;
     import java.util.HashMap;
     import java.util.List;
+    import java.util.Objects;
 
     public class SwingMainFrame extends JFrame {
 
         public static final Color BACKGROUND_COLOR = Color.RED;
+        public static final String ICON_PNG = "/icon.png";
         private static final int WIDTH = 1080;
         private static final int HEIGHT = 270;
         private static final String TITLE = "Money Calculator";
@@ -28,7 +30,6 @@
         private final SwingDateMoneyConversionFrame swingDateMoneyConversionFrame;
         private SwingCurrenciesDialogsPane swingCurrenciesDialogsPane;
         private SwingConversionPane swingConversionPane;
-        private JMenuBar jMenuBar;
 
         public SwingMainFrame(List<Currency> currencies) throws HeadlessException, IOException {
             super();
@@ -65,8 +66,9 @@
         }
 
         private Image getIconAsImage() throws IOException {
-            InputStream iconAsStream = SwingMainFrame.class.getResourceAsStream("/icon.png");
-            return ImageIO.read(iconAsStream);
+            try (InputStream iconAsStream = SwingMainFrame.class.getResourceAsStream(ICON_PNG)) {
+                return ImageIO.read(Objects.requireNonNull(iconAsStream));
+            }
         }
 
         private void addPanels() {
@@ -82,9 +84,9 @@
         }
 
         private JMenuBar buildJMenuBar() {
-            this.jMenuBar = new JMenuBar();
-            this.jMenuBar.setBackground(BACKGROUND_COLOR);
-            this.jMenuBar.add(getJMenu());
+            JMenuBar jMenuBar = new JMenuBar();
+            jMenuBar.setBackground(BACKGROUND_COLOR);
+            jMenuBar.add(getJMenu());
             return jMenuBar;
         }
 
@@ -140,9 +142,5 @@
 
         public MoneyDisplay getMoneyDisplay() {
             return swingConversionPane.getMoneyDisplay();
-        }
-
-        public CurrenciesDialog getDateConversionToCurrenciesDialog() {
-            return swingDateMoneyConversionFrame.getToCurrenciesDialog();
         }
     }
