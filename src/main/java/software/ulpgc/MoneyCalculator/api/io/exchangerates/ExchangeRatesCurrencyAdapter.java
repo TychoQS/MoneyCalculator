@@ -15,14 +15,16 @@ import java.util.Map;
 
 public class ExchangeRatesCurrencyAdapter implements CurrencyAdapter {
 
+    public static final String CURRENCY_CODE_TO_SYMBOL_CSV = "/currency_code_to_symbol.csv";
+    public static final String DEFAULT_VALUE = "N/A";
     private final CurrencyCodesToSymbols codeToSymbols;
 
     public ExchangeRatesCurrencyAdapter() throws IOException {
         codeToSymbols = new FileCurrencyCodeToSymbolListLoader(getResource(), new CsvCodeAndSymbolDeserializer()).load();
     }
 
-    private static InputStream getResource() { // TODO -> Should remove it and find another form
-        return ExchangeRatesCurrencyAdapter.class.getResourceAsStream("/currency_code_to_symbol.csv");
+    private static InputStream getResource() {
+        return ExchangeRatesCurrencyAdapter.class.getResourceAsStream(CURRENCY_CODE_TO_SYMBOL_CSV);
     }
 
     @Override
@@ -37,7 +39,7 @@ public class ExchangeRatesCurrencyAdapter implements CurrencyAdapter {
     private List<Currency> listOf(Map<String, String> symbols) {
         List<Currency> currencies = new ArrayList<>();
         for (String code : symbols.keySet()) {
-            currencies.add(new Currency(code, symbols.get(code), codeToSymbols.getOrDefault(code, "N/A")));
+            currencies.add(new Currency(code, symbols.get(code), codeToSymbols.getOrDefault(code, DEFAULT_VALUE)));
         }
         return currencies;
     }
