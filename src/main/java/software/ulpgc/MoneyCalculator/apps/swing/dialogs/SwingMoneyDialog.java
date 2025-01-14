@@ -34,7 +34,7 @@ public class SwingMoneyDialog extends JTextField implements MoneyDialog {
     }
 
     private static String getAmount(Money money) {
-        return String.valueOf(money.getAmount());
+        return String.valueOf(money.amount());
     }
 
     @Override
