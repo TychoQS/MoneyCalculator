@@ -12,23 +12,27 @@ import static org.jsoup.Connection.Method.GET;
 
 public class CurrencyLayerDateConversionReader implements DateConversionReader {
 
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
+    public static final String ACCEPT = "accept";
+    public static final String ALL_TEXT = "text/*";
+    public static final int HTTP_OK = 200;
+
     @Override
     public String read(String fromCurrencyCode, String toCurrencyCode, ZonedDateTime date) throws IOException {
-        System.out.println("ENDPOINT URL: " + CurrencyLayerApi.getDateConversionEndpoint(fromCurrencyCode, toCurrencyCode, formatted(date))); // TODO -> Remove
         return read(CurrencyLayerApi.getDateConversionEndpoint(fromCurrencyCode, toCurrencyCode, formatted(date)));
     }
 
     private String read(String dateExchangeRateEndpoint) throws IOException {
         Connection.Response response = Jsoup.connect(dateExchangeRateEndpoint)
                 .ignoreContentType(true)
-                .header("accept", "text/*")
+                .header(ACCEPT, ALL_TEXT)
                 .method(GET)
                 .execute();
-        if (response.statusCode() != 200) throw new RuntimeException();
+        if (response.statusCode() != HTTP_OK) throw new RuntimeException();
         return response.body();
     }
 
     private String formatted(ZonedDateTime date) {
-        return DateTimeFormatter.ofPattern("yyyy-MM-dd").format(date);
+        return DateTimeFormatter.ofPattern(DATE_FORMAT).format(date);
     }
 }
