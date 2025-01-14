@@ -53,11 +53,10 @@
         }
 
         private ExchangeRate getExchangeRateLoader() throws IOException {
-            return loader.load(this.dialog.getMoney().getCurrency(), getToCurrency());
+            return loader.load(this.dialog.getMoney().currency(), getToCurrency());
         }
 
         private double getMoneyAmount() {
-
-            return dialog.getMoney().getAmount();
+            return dialog.getMoney().amount();
         }
     }
