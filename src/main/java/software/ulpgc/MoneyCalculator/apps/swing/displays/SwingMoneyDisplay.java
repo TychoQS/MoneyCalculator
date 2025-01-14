@@ -23,14 +23,14 @@ public class SwingMoneyDisplay extends JLabel implements MoneyDisplay {
     }
 
     private static double getRoundedAmount(Money money) {
-        BigDecimal amount = BigDecimal.valueOf(money.getAmount());
+        BigDecimal amount = BigDecimal.valueOf(money.amount());
         BigDecimal roundedAmount = amount.setScale(2, RoundingMode.DOWN);
         return roundedAmount.doubleValue();
     }
 
     @Override
     public void display(Money money) {
-        this.setText(getRoundedAmount(money) + " " + money.getCurrency().getCode());
+        this.setText(getRoundedAmount(money) + " " + money.currency().getCode());
         this.putClientProperty(MONEY_PROPERTY, money);
     }
 
