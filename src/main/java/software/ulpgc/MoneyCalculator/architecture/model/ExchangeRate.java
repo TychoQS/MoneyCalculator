@@ -23,14 +23,6 @@ public class ExchangeRate {
         return rate;
     }
 
-    public Currency getFrom() {
-        return from;
-    }
-
-    public Currency getTo() {
-        return to;
-    }
-
     @Override
     public String toString() {
         return "ExchangeRate{" +
