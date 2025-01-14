@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class SwingCurrenciesDialog extends JComboBox implements CurrenciesDialog {
+public class SwingCurrenciesDialog extends JComboBox<Currency> implements CurrenciesDialog {
 
     public static final int FONT_SIZE = 15;
     public static final String FONT_NAME = "FB Agent";
