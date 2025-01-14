@@ -12,17 +12,15 @@ import java.util.Map;
 
 public class CurrencyLayerExchangeRateAdapter implements ExchangeRateAdapter {
 
-    public static final String APIKEY_EXPIRED_MESSAGE = "Unable to access the API as the API key usage limit has been reached.";
-
     @Override
     public ExchangeRate adapt(Object object, Currency fromCurrency, Currency toCurrency) throws IOException {
         try {
             CurrencyLayerExchangeRateGetResponse response = (CurrencyLayerExchangeRateGetResponse) object;
-            System.out.println("Object: " + response);
             return adapt(response.timestamp(), response.quotes(), fromCurrency, toCurrency);
         } catch (ClassCastException ex) {
-            CurrencyLayerGetResponseError responseError = (CurrencyLayerGetResponseError) object;
-            throw new IOException(responseError.error().info());
+            throw (object instanceof CurrencyLayerGetResponseError responseError)
+                    ? new IOException(responseError.error().info())
+                    : new IOException(ex.getMessage());
         }
     }
 
