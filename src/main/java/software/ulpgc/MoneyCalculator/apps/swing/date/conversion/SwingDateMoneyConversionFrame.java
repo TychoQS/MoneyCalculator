@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class SwingDateMoneyConversionFrame extends JFrame {
 
@@ -28,6 +29,7 @@ public class SwingDateMoneyConversionFrame extends JFrame {
     public static final int BUTTON_WIDTH = 200;
     public static final Color BUTTON_BACKGROUND_COLOR = Color.RED;
     public static final Color BACKGROUND_COLOR = Color.RED;
+    public static final String ICON_PNG = "/icon.png";
     private static final String BUTTON_LABEL = "Convert";
     private static final String BUTTON_COMMAND = "convert";
     private static final String TITLE_TEXT = "Date conversion";
@@ -95,7 +97,7 @@ public class SwingDateMoneyConversionFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setLayout(new GridLayout(2, 1));
         this.setBackground(BACKGROUND_COLOR);
-        this.setIconImage(getIconAsImage());
+        this.setIconImage(getIcon());
     }
 
     private Image getIcon() throws IOException {
@@ -103,8 +105,9 @@ public class SwingDateMoneyConversionFrame extends JFrame {
     }
 
     private Image getIconAsImage() throws IOException {
-        InputStream iconAsStream = SwingMainFrame.class.getResourceAsStream("/icon.png");
-        return ImageIO.read(iconAsStream);
+        try (InputStream iconAsStream = SwingMainFrame.class.getResourceAsStream(ICON_PNG)) {
+            return ImageIO.read(Objects.requireNonNull(iconAsStream));
+        }
     }
 
     private Component topPanel(List<Currency> currencies) {
