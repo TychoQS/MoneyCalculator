@@ -30,7 +30,6 @@ public class SwingCurrenciesDialogsPane {
     private final CurrenciesDialog toCurrency;
     private final List<Currency> currencies;
     private final Map<String, Command> commands;
-    private JButton button;
 
     public SwingCurrenciesDialogsPane(List<Currency> currencies, Map<String, Command> commands) {
         this.currencies = currencies;
@@ -63,7 +62,7 @@ public class SwingCurrenciesDialogsPane {
     private Component exchangeButtonPanel() {
         JPanel panel = new JPanel();
         panel.setBackground(BACKGROUND_COLOR);
-        this.button = new JButton();
+        JButton button = new JButton();
         button.setIcon(BUTTON_ICON);
         button.addActionListener(e -> commands.get(EXCHANGE_COMMAND).execute());
         button.setPreferredSize(new Dimension(WIDTH, HEIGHT));
